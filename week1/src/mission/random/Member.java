@@ -20,5 +20,6 @@ class Member {
         members.add("반스");
         members.add("Konda");
         members.add("Yan");
+        members.add("Teemo");
     }
 }
