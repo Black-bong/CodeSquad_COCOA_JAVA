@@ -3,7 +3,6 @@ package mission.random;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class RandomMembers {
     public static void main(String[] args) throws IOException {
@@ -28,8 +27,8 @@ public class RandomMembers {
 
         for (int i = 0; i < count; i++) {
 
-            System.out.print(member.getMembers().get((int)(Math.random() * length)));
-            if (i == count-1) {
+            System.out.print(member.getMembers().get((int) (Math.random() * length)));
+            if (i == count - 1) {
                 break;
             }
             System.out.print(", ");
