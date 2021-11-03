@@ -24,7 +24,7 @@
   4. 파일 읽기의 기초
       - -[X] Scanner를 활용
       - -[X] BufferdReader()를 활용
-      - -[ ] 위 두개의 차이점 알아보기
+      - -[X] 위 두개의 차이점 알아보기
   5. Call by Value, Call by Reference
       - -[ ] Call by Value 란?
       - -[ ] Call by Reference 란?
