@@ -16,14 +16,14 @@
   1. 조건문
       - -[X] 조건문 사용 시 else와 else if 를 사용하지 않는 법에 대해 고민해보기
   2. 반목문
-      - -[ ] for와 while 반복문 익히기
-      - -[ ] break와 continue의 차이 알아보고 활용하기
+      - -[X] for와 while 반복문 익히기
+      - -[X] break와 continue의 차이 알아보고 활용하기
   3. 함수와 메소드
-      - -[ ] 함수를 사용하는 이유 알아보기
-      - -[ ] 함수와 메소드의 차이는?
+      - -[X] 함수를 사용하는 이유 알아보기
+      - -[X] 함수와 메소드의 차이는?
   4. 파일 읽기의 기초
-      - -[ ] Scanner를 활용
-      - -[ ] BufferdReader()를 활용
+      - -[X] Scanner를 활용
+      - -[X] BufferdReader()를 활용
       - -[ ] 위 두개의 차이점 알아보기
   5. Call by Value, Call by Reference
       - -[ ] Call by Value 란?
