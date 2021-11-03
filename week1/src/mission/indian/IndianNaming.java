@@ -11,15 +11,15 @@ public class IndianNaming {
 
     public void init() {
         Scanner scanner = new Scanner(System.in);
-        int year = scanner.nextInt() % 10;
+
+        System.out.println("생년월일(1900 01 01)을 입력해 주세요>");
+        int year = scanner.nextInt();
         int month = scanner.nextInt();
         int day = scanner.nextInt();
-        scanner.close();
-        printName(year, month, day);
-    }
 
-    public void printName(int y, int m, int d) {
-        Name name = new Name(y, m, d);
+        scanner.close();
+
+        Name name = new Name(year, month, day);
         System.out.println(name.toString());
     }
 }
