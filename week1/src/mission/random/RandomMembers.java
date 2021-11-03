@@ -1,30 +1,9 @@
-package mission;
+package mission.random;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-
-class Member {
-
-    ArrayList<String> members = new ArrayList<String>();
-
-    public ArrayList<String> getMembers() {
-        return members;
-    }
-
-    public void addMember() {
-        members.add("검봉");
-        members.add("Jarry");
-        members.add("Hanse");
-        members.add("Ella");
-        members.add("sonny");
-        members.add("Bart");
-        members.add("반스");
-        members.add("Konda");
-        members.add("Yan");
-    }
-}
 
 public class RandomMembers {
     public static void main(String[] args) throws IOException {
