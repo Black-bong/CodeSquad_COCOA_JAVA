@@ -1,8 +1,8 @@
-package algorithm;
+package algorithm.boj;
 
 import java.util.Scanner;
 
-public class Boj_2884 {
+public class Boj2884 {
 
     public static final int MINUS_MIN = 45;
     public static final int ONE_HOUR = 60;

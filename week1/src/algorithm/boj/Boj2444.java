@@ -1,8 +1,8 @@
-package algorithm;
+package algorithm.boj;
 
 import java.util.Scanner;
 
-public class Boj_2444 {
+public class Boj2444 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int temp = 5;
