@@ -26,8 +26,8 @@
       - -[X] BufferdReader()를 활용
       - -[X] 위 두개의 차이점 알아보기
   5. Call by Value, Call by Reference
-      - -[ ] Call by Value 란?
-      - -[ ] Call by Reference 란?
+      - -[X] Call by Value 란?
+      - -[X] Call by Reference 란?
 
 ## 21.11.03(day_3)
   1. 미션 2-0: 랜덤 뽑기
@@ -57,13 +57,13 @@
  
  ## 21.11.04(day_4)
   1. 자바의 타입
-      - -[ ] primitive: byte, short, int, long, float, double, boolean
+      - -[X] primitive: byte, short, int, long, float, double, boolean
   2. Call by Value, Call by Reference
-      - -[ ] 코드로 구현하고 실행해 보기
+      - -[X] 코드로 구현하고 실행해 보기
   3. 자바의 메모리 구조
-      - -[ ] 코드영역, static영역, 스택, 힙
+      - -[X] 코드영역, static영역, 스택, 힙
   4. 재귀
-      - -[ ] 재귀에 대해 공부하고 코드로 구현 및 실행
+      - -[X] 재귀에 대해 공부하고 코드로 구현 및 실행
   5. 클래스와 객체
       - -[ ] 클래스와 객체의 차이점 공부
       - -[ ] 객체의 LifeCycle 공부
