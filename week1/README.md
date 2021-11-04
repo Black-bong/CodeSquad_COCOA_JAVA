@@ -57,16 +57,16 @@
  
  ## 21.11.04(day_4)
   1. 자바의 타입
-    - -[ ] primitive: byte, short, int, long, float, double, boolean
+      - -[ ] primitive: byte, short, int, long, float, double, boolean
   2. Call by Value, Call by Reference
-    - -[ ] 코드로 구현하고 실행해 보기
+      - -[ ] 코드로 구현하고 실행해 보기
   3. 자바의 메모리 구조
-    - -[ ] 코드영역, static영역, 스택, 힙
+      - -[ ] 코드영역, static영역, 스택, 힙
   4. 재귀
-    - -[ ] 재귀에 대해 공부하고 코드로 구현 및 실행
+      - -[ ] 재귀에 대해 공부하고 코드로 구현 및 실행
   5. 클래스와 객체
-    - -[ ] 클래스와 객체의 차이점 공부
-    - -[ ] 객체의 LifeCycle 공부
-    - -[ ] 객체의 메모리 공간
+      - -[ ] 클래스와 객체의 차이점 공부
+      - -[ ] 객체의 LifeCycle 공부
+      - -[ ] 객체의 메모리 공간
   6. 자료구조의 기초
-    - -[ ] 자바에서 가장 많이 사용하는 자료구조는?
+      - -[ ] 자바에서 가장 많이 사용하는 자료구조는?
