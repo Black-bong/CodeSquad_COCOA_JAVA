@@ -25,9 +25,6 @@
       - -[X] Scanner를 활용
       - -[X] BufferdReader()를 활용
       - -[X] 위 두개의 차이점 알아보기
-  5. Call by Value, Call by Reference
-      - -[X] Call by Value 란?
-      - -[X] Call by Reference 란?
 
 ## 21.11.03(day_3)
   1. 미션 2-0: 랜덤 뽑기
@@ -72,3 +69,6 @@
       - -[ ] 자바에서 가장 많이 사용하는 자료구조는?
   7. 깃 관리 기초
       - -[X] .gitignore에 대해 공부하고 적용시키기
+  8. Call by Value, Call by Reference
+      - -[X] Call by Value 란?
+      - -[X] Call by Reference 란?
