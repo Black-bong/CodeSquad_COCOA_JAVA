@@ -72,3 +72,8 @@
   8. Call by Value, Call by Reference
       - -[X] Call by Value 란?
       - -[X] Call by Reference 란?
+
+## 21.11.05(day_5)
+  1. 알고리즘 풀
+      - -[ ] 백준 Class 1 전부
+      - -[ ] 백준 Class 2 브론즈 문제 전부
