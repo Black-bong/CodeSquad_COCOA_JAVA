@@ -30,6 +30,10 @@ public class Boj1546 {
             sum += temp;
         }
         avg = sum / scoreCount;
-        System.out.println(avg);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(avg);
+
+        System.out.println(sb);
     }
 }
