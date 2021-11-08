@@ -7,7 +7,6 @@ import moneybook.repository.MemberRepository;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
@@ -17,6 +16,8 @@ public class Main {
 
     DataRepository dataRepository = DataRepository.getInstance();
     MemberRepository memberRepository = MemberRepository.getInstance();
+    BufferedReader bufferedInput = BufferedInput.getInstance();
+
     private static final Logger LOG = Logger.getGlobal();
 
     public static void main(String[] args) throws IOException {
@@ -31,18 +32,22 @@ public class Main {
         System.out.println("2. 로그인");
         System.out.println("3. 종료");
         System.out.print(">> ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        int selectNumber = Integer.parseInt(buf.readLine());
+
+        int selectNumber = Integer.parseInt(bufferedInput.readLine());
         switch (selectNumber) {
             case 1:
                 memberData();
                 break;
             case 2:
-                dataMenu();
+                logIn();
                 break;
             case 3:
-                return;
+                System.exit(0);
         }
+    }
+
+    private void logIn() throws IOException {
+        dataMenu();
     }
 
     private void dataMenu() throws IOException {
@@ -57,8 +62,7 @@ public class Main {
         System.out.println("4. 데이터 삭제");
         System.out.println("5. 메인 메뉴");
         System.out.print(">> ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        int selectNumber = Integer.parseInt(buf.readLine());
+        int selectNumber = Integer.parseInt(bufferedInput.readLine());
         switch (selectNumber) {
             case 1:
                 createData();
@@ -84,8 +88,7 @@ public class Main {
         String date;
 
         System.out.print(">> ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer str = new StringTokenizer(buf.readLine(), " ");
+        StringTokenizer str = new StringTokenizer(bufferedInput.readLine(), " ");
 
         try {
             date = str.nextToken();
@@ -98,6 +101,7 @@ public class Main {
             Data data = new Data(date, briefs, income, expenses);
             dataRepository.dataSave(data);
             createData();
+
         } catch (NoSuchElementException e) {
             System.out.println("입력값 오류 다시 입력해주세요.");
             LOG.info(e.toString());
@@ -108,8 +112,7 @@ public class Main {
     private void readData() throws IOException {
         System.out.println("조회 할 월을 입력하세요.");
         System.out.print(">> ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        String date = buf.readLine();
+        String date = bufferedInput.readLine();;
         List<Data> data = dataRepository.findAllData();
 
         for (Data d : data) {
@@ -121,14 +124,13 @@ public class Main {
     }
 
     private void updateData() throws IOException {
-        System.out.println("수정할 데이터의 번호를 입력하시오.(종료:exit)");
+        System.out.println("수정할 데이터의 번호를 입력하시오.");
         System.out.print(">> ");
 
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        Long id = Long.parseLong(buf.readLine());
+        Long id = Long.parseLong(bufferedInput.readLine());
         System.out.println("날짜, 적요, 수입, 지출을 띄어쓰기로 구분하여 입력하시오.");
         System.out.print(">> ");
-        StringTokenizer str = new StringTokenizer(buf.readLine(), " ");
+        StringTokenizer str = new StringTokenizer(bufferedInput.readLine(), " ");
         Data data = dataRepository.findByIdData(id);
         data.setDate(str.nextToken());
         data.setBriefs(str.nextToken());
@@ -142,8 +144,7 @@ public class Main {
         System.out.println("삭제할 데이터의 번호를 입력하시오.");
         System.out.print(">> ");
 
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        Long id = Long.parseLong(buf.readLine());
+        Long id = Long.parseLong(bufferedInput.readLine());
         dataRepository.removeData(id);
         dataMenu();
     }
@@ -151,8 +152,8 @@ public class Main {
     private void memberData() throws IOException {
         System.out.println("사용자 이름과 비밀번호를 띄어쓰기로 구분하여 입력하세요.");
         System.out.print(">> ");
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer str = new StringTokenizer(buf.readLine(), " ");
+
+        StringTokenizer str = new StringTokenizer(bufferedInput.readLine(), " ");
         String username = str.nextToken();
         String password = str.nextToken();
 
