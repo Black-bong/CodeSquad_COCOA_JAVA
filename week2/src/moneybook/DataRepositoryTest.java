@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
-
 class DataRepositoryTest {
 
     @BeforeEach
@@ -21,8 +19,6 @@ class DataRepositoryTest {
         Data data = new Data("11월02일","핸드폰요금",10000.0,0.0);
         DataRepository dataRepository = new DataRepository();
         dataRepository.dataSave(data);
-
-        System.out.println(data.getDate());
 
         Assertions.assertEquals(data.getBriefs(),"핸드폰요금");
     }
@@ -39,6 +35,5 @@ class DataRepositoryTest {
         dataRepository.dataSave(data3);
 
         Assertions.assertEquals(data3.getCash(), 1020000.0);
-        dataRepository.findAllData();
     }
 }
