@@ -1,20 +1,26 @@
 package moneybook;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
 public class Data {
     private Long dataID;
-    private LocalDateTime date;
+    private String date;
     private String briefs;
     private Double income;
     private Double expenses;
+    private Double cash = 0.0;
 
-    public Data(LocalDateTime date, String briefs, Double income, Double expenses) {
+    public Data(String date, String briefs, Double income, Double expenses) {
         this.date = date;
         this.briefs = briefs;
         this.income = income;
         this.expenses = expenses;
+    }
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(Double cash) {
+        this.cash = cash;
     }
 
     public Long getDataID() {
@@ -25,11 +31,11 @@ public class Data {
         this.dataID = dataID;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -55,5 +61,15 @@ public class Data {
 
     public void setExpenses(Double expenses) {
         this.expenses = expenses;
+    }
+
+    @Override
+    public String toString() {
+        return getDataID() + " "
+                + "날짜:" + getDate() + " "
+                + "적요:" + getBriefs() + " "
+                + "수입:" + getIncome() + "원 "
+                + "지출:" + getExpenses() + "원 "
+                + "잔액:" + getCash() + "원";
     }
 }
