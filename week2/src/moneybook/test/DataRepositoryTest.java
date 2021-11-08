@@ -9,9 +9,10 @@ import org.junit.jupiter.api.Test;
 
 class DataRepositoryTest {
 
+    DataRepository dataRepository = DataRepository.getInstance();
+
     @BeforeEach
     void clearData() {
-        DataRepository dataRepository = new DataRepository();
         dataRepository.clearData();
     }
 
@@ -19,7 +20,6 @@ class DataRepositoryTest {
     @DisplayName("데이터 저장 확인")
     void saveData() {
         Data data = new Data("11월02일","핸드폰요금",10000.0,0.0);
-        DataRepository dataRepository = new DataRepository();
         dataRepository.dataSave(data);
 
         Assertions.assertEquals(data.getBriefs(),"핸드폰요금");
@@ -28,7 +28,6 @@ class DataRepositoryTest {
     @Test
     @DisplayName("잔액 호출")
     void callCash() {
-        DataRepository dataRepository = new DataRepository();
         Data data1 = new Data("11월01일", "월급", 1000000.0, 0.0);
         dataRepository.dataSave(data1);
         Data data2 = new Data("11월02일", "핸드폰요금", 0.0, 100000.0);
@@ -37,5 +36,14 @@ class DataRepositoryTest {
         dataRepository.dataSave(data3);
 
         Assertions.assertEquals(data3.getCash(), 1020000.0);
+    }
+
+    @Test
+    @DisplayName("데이터 삭제 확인")
+    void deleteData() {
+        Data data = new Data("11월01일", "월급", 1000000.0, 0.0);
+        dataRepository.dataSave(data);
+        dataRepository.removeData(1L);
+        Assertions.assertNull(dataRepository.findByIdData(1L));
     }
 }
