@@ -1,4 +1,4 @@
-package moneybook;
+package moneybook.domain;
 
 
 public class Member {

@@ -1,4 +1,6 @@
-package moneybook;
+package moneybook.repository;
+
+import moneybook.domain.Member;
 
 import java.util.ArrayList;
 import java.util.HashMap;

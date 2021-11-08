@@ -1,5 +1,7 @@
-package moneybook;
+package moneybook.test;
 
+import moneybook.domain.Member;
+import moneybook.repository.MemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
