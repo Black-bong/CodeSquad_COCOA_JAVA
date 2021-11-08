@@ -47,14 +47,20 @@ public class Main {
     }
 
     private void logIn() throws IOException {
+        if (!memberRepository.isFlag()) {
+            System.out.println("등록된 사용자가 없습니다, 사용자를 등록해주세요.");
+            memberData();
+        }
+        System.out.println("사용자 이름과 비밀번호를 띄어쓰기로 구분하여 입력하세요.");
+        System.out.print(">> ");
+
+        StringTokenizer str = new StringTokenizer(bufferedInput.readLine(), " ");
+        String username = str.nextToken();
+        String password = str.nextToken();
         dataMenu();
     }
 
     private void dataMenu() throws IOException {
-        if (!memberRepository.isFlag()) {
-            System.out.println("사용자를 등록해주세요.");
-            memberData();
-        }
         System.out.println("========Menu========");
         System.out.println("1. 데이터 등록");
         System.out.println("2. 데이터 확인");
