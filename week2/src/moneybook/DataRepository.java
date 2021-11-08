@@ -6,16 +6,25 @@ import java.util.List;
 import java.util.Map;
 
 public class DataRepository {
+
+    private static final DataRepository instance = new DataRepository();
     private static Map<Long, Data> dataList = new HashMap<>();
     private static long sequence = 0L;
+    private static double cash = 0.0;
 
     public Data dataSave(Data data) {
         data.setDataID(++sequence);
+        cash += (data.getIncome() - data.getExpenses());
+        data.setCash(cash);
         dataList.put(sequence, data);
         return data;
     }
 
-    public Data FindByIdData(Long id) {
+    public static DataRepository getInstance() {
+        return instance;
+    }
+
+    public Data findByIdData(Long id) {
         return dataList.get(id);
     }
 
