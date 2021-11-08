@@ -1,23 +1,20 @@
-package algorithm.boj;
+package boj;
 
 import java.util.Scanner;
 
-public class Boj2443 {
+public class Boj2439 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        int temp = 1;
-
         int starCount = scan.nextInt();
 
-        for (int i=1; i<=starCount; i++) {
-            for (int j=1; j<i; j++) {
+        for (int i=1;i<=starCount;i++) {
+            for (int j=starCount;j>i;j--) {
                 System.out.print(" ");
             }
-            for (int z=0; z<2 * starCount - temp ; z++) {
+            for (int k=0;k<i;k++) {
                 System.out.print("*");
             }
-            temp += 2;
             System.out.println();
         }
     }
