@@ -1,4 +1,4 @@
-package moneybook.test;
+package test.moneybookrepositorytest;
 
 import moneybook.domain.Member;
 import moneybook.repository.MemberRepository;
