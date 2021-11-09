@@ -5,12 +5,12 @@ import java.io.InputStreamReader;
 
 public class BufferedInput {
 
-    private static BufferedReader instance = new BufferedReader(new InputStreamReader(System.in));
+    private static final BufferedReader instance = new BufferedReader(new InputStreamReader(System.in));
 
     public static BufferedReader getInstance() {
-        if (instance == null) {
-            instance = new BufferedReader(new InputStreamReader(System.in));
-        }
+//        if (instance == null) {
+//            instance = new BufferedReader(new InputStreamReader(System.in));
+//        }
         return instance;
     }
 }

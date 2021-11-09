@@ -32,7 +32,7 @@ public class Main {
         System.out.println("2. 로그인");
         System.out.println("3. 종료");
         System.out.print(">> ");
-
+//        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
         int selectNumber = Integer.parseInt(bufferedInput.readLine());
         switch (selectNumber) {
             case 1:
@@ -118,7 +118,8 @@ public class Main {
     private void readData() throws IOException {
         System.out.println("조회 할 월을 입력하세요.");
         System.out.print(">> ");
-        String date = bufferedInput.readLine();;
+        String date = bufferedInput.readLine();
+
         List<Data> data = dataRepository.findAllData();
 
         for (Data d : data) {
