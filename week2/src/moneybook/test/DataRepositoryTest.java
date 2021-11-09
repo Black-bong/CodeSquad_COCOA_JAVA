@@ -19,10 +19,10 @@ class DataRepositoryTest {
     @Test
     @DisplayName("데이터 저장 확인")
     void saveData() {
-        Data data = new Data("11월02일","핸드폰요금",10000.0,0.0);
+        Data data = new Data("11월02일", "핸드폰요금", 10000.0, 0.0);
         dataRepository.dataSave(data);
 
-        Assertions.assertEquals(data.getBriefs(),"핸드폰요금");
+        Assertions.assertEquals(data.getBriefs(), "핸드폰요금");
     }
 
     @Test
