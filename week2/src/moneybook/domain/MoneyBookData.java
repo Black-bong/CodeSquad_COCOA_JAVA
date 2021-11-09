@@ -1,6 +1,6 @@
 package moneybook.domain;
 
-public class Data {
+public class MoneyBookData {
     private Long dataID;
     private String date;
     private String briefs;
@@ -8,7 +8,7 @@ public class Data {
     private Double expenses;
     private Double cash = 0.0;
 
-    public Data(String date, String briefs, Double income, Double expenses) {
+    public MoneyBookData(String date, String briefs, Double income, Double expenses) {
         this.date = date;
         this.briefs = briefs;
         this.income = income;
