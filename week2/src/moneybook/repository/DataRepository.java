@@ -1,6 +1,6 @@
 package moneybook.repository;
 
-import moneybook.domain.Data;
+import moneybook.domain.MoneyBookData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,11 +10,11 @@ import java.util.Map;
 public class DataRepository {
 
     private static final DataRepository instance = new DataRepository();
-    private static final Map<Long, Data> dataList = new HashMap<>();
+    private static final Map<Long, MoneyBookData> dataList = new HashMap<>();
     private static long sequence = 0L;
     private static double cash = 0.0;
 
-    public void dataSave(Data data) {
+    public void dataSave(MoneyBookData data) {
         data.setDataID(++sequence);
         cash += (data.getIncome() - data.getExpenses());
         data.setCash(cash);
@@ -25,7 +25,7 @@ public class DataRepository {
         return instance;
     }
 
-    public Data findByIdData(Long id) {
+    public MoneyBookData findByIdData(Long id) {
         return dataList.get(id);
     }
 
@@ -33,7 +33,7 @@ public class DataRepository {
         dataList.remove(id);
     }
 
-    public List<Data> findAllData() {
+    public List<MoneyBookData> findAllData() {
         return new ArrayList<>(dataList.values());
     }
 
