@@ -1,7 +1,7 @@
 package moneybook.model;
 
 
-import moneybook.BufferedReaderSingleton;
+import moneybook.singleton.BufferedReaderSingleton;
 import moneybook.view.MoneyBook;
 import moneybook.domain.Member;
 import moneybook.repository.MemberRepository;
@@ -28,7 +28,7 @@ public class MainMenu extends MoneyBook {
     }
 
     public void login() throws IOException {
-        if (!memberRepository.isFlag()) {
+        if (memberRepository.memberIsValid()) {
             System.out.println("등록된 사용자가 없습니다, 사용자를 등록해주세요.");
             createAccount();
         }
@@ -37,6 +37,11 @@ public class MainMenu extends MoneyBook {
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
         String username = str.nextToken();
         String password = str.nextToken();
+        if (!memberRepository.isSameMember(username, password)) {
+            System.out.println("등록되지 않은 사용자입니다.");
+            login();
+        }
+        System.out.println("로그인 성공");
         subMenu();
     }
 
