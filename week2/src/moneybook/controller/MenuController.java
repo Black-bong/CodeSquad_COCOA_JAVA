@@ -1,6 +1,6 @@
 package moneybook.controller;
 
-import moneybook.BufferedReaderSingleton;
+import moneybook.singleton.BufferedReaderSingleton;
 import moneybook.model.MainMenu;
 import moneybook.model.SubMenu;
 
