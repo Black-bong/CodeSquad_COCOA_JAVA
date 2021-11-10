@@ -3,62 +3,35 @@ package test.moneybookrepositorytest;
 import moneybook.domain.MoneyBookData;
 import moneybook.repository.DataRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 class DataRepositoryTest {
 
-    DataRepository dataRepository = DataRepository.getInstance();
-
-    @BeforeEach
-    void clearData() {
-        dataRepository.clearData();
-    }
-
     @Test
-    @DisplayName("데이터 저장 확인")
-    void saveData() {
-        MoneyBookData data = new MoneyBookData("11월02일", "핸드폰요금", 10000.0, 0.0);
-        dataRepository.dataSave(data);
+    @DisplayName("데이터 검색")
+    void searchData () {
+        DataRepository dataRepository = new DataRepository();
+        MoneyBookData moneyBookData1 = new MoneyBookData("10월10일", "월급", BigDecimal.valueOf(1500000), BigDecimal.valueOf(0), "없음");
+        dataRepository.dataSave(moneyBookData1);
+        MoneyBookData moneyBookData2 = new MoneyBookData("11월10일", "용돈", BigDecimal.valueOf(0), BigDecimal.valueOf(20000), "현금");
+        dataRepository.dataSave(moneyBookData2);
+        MoneyBookData moneyBookData3 = new MoneyBookData("12월10일", "핸드폰요금", BigDecimal.valueOf(0), BigDecimal.valueOf(100000), "카드");
+        dataRepository.dataSave(moneyBookData3);
+        MoneyBookData moneyBookData4 = new MoneyBookData("01월10일", "월급", BigDecimal.valueOf(1500000), BigDecimal.valueOf(0), "없음");
+        dataRepository.dataSave(moneyBookData4);
+        MoneyBookData moneyBookData5 = new MoneyBookData("02월10일", "월급", BigDecimal.valueOf(1500000), BigDecimal.valueOf(0), "없음");
+        dataRepository.dataSave(moneyBookData5);
+        MoneyBookData moneyBookData6 = new MoneyBookData("03월10일", "핸드폰요금", BigDecimal.valueOf(0), BigDecimal.valueOf(50000), "카드");
+        dataRepository.dataSave(moneyBookData6);
+        MoneyBookData moneyBookData7 = new MoneyBookData("04월10일", "외식", BigDecimal.valueOf(0), BigDecimal.valueOf(70000), "현금");
+        dataRepository.dataSave(moneyBookData7);
+        MoneyBookData moneyBookData8 = new MoneyBookData("05월10일", "용돈", BigDecimal.valueOf(0), BigDecimal.valueOf(10000), "현금");
+        dataRepository.dataSave(moneyBookData8);
 
+        Assertions.assertEquals(dataRepository.findByBriefsData("월급").size(), 3);
     }
 
-    @Test
-    @DisplayName("잔액 호출")
-    void callCash() {
-        MoneyBookData data1 = new MoneyBookData("11월01일", "월급", 1000000.0, 0.0);
-        dataRepository.dataSave(data1);
-        MoneyBookData data2 = new MoneyBookData("11월02일", "핸드폰요금", 0.0, 100000.0);
-        dataRepository.dataSave(data2);
-        MoneyBookData data3 = new MoneyBookData("11월03일", "보너스", 120000.0, 0.0);
-        dataRepository.dataSave(data3);
-
-        Assertions.assertSame(dataRepository.isSameBalance(1020000.0), true);
-    }
-
-    @Test
-    @DisplayName("데이터 삭제 확인")
-    void deleteData() {
-        MoneyBookData data = new MoneyBookData("11월01일", "월급", 1000000.0, 0.0);
-        dataRepository.dataSave(data);
-        dataRepository.removeData(1L);
-        Assertions.assertNull(dataRepository.findByIdData(1L));
-    }
-
-    @Test
-    @DisplayName("데이터 수정 확인")
-    void updateData() {
-        MoneyBookData data1 = new MoneyBookData("11월01일", "월급", 1000000.0, 0.0);
-        dataRepository.dataSave(data1);
-        MoneyBookData data2 = new MoneyBookData("11월01일", "핸드폰요금", 0.0, 150000.0);
-        dataRepository.dataSave(data2);
-        MoneyBookData data3 = new MoneyBookData("11월01일", "외식", 0.0, 50000.0);
-        dataRepository.dataSave(data3);
-        System.out.println(dataRepository.findByMonthData("11월"));
-        MoneyBookData updateData = new MoneyBookData("11월01일", "핸드폰", 0.0, 200000.0);
-        dataRepository.dataUpdate(2L, updateData);
-
-        System.out.println(dataRepository.findByMonthData("11월"));
-    }
 }
