@@ -10,27 +10,30 @@ import java.util.Map;
 public class MemberRepository {
 
     private static final MemberRepository instance = new MemberRepository();
-    private static Map<Long, Member> members = new HashMap<>();
+    private static final Map<Long, Member> members = new HashMap<>();
     private static long sequence = 0L;
-    private static boolean flag = false;
 
     public Member save(Member member) {
         member.setId(++sequence);
         members.put(sequence, member);
-        flag = true;
         return member;
     }
 
-    public boolean isFlag() {
-        return flag;
+    public boolean memberIsValid() {
+        return sequence == 0L;
     }
 
     public static MemberRepository getInstance() {
         return instance;
     }
 
-    public Member findByIdMember(Long id) {
-        return members.get(id);
+    public boolean isSameMember(String n, String p) {
+        for (Member value : findAllMember()) {
+            if (value.isSameUserName(n)) {
+                return value.isSamePassword(p);
+            }
+        }
+        return false;
     }
 
     public List<Member> findAllMember() {
