@@ -22,7 +22,6 @@ class DataRepositoryTest {
         MoneyBookData data = new MoneyBookData("11월02일", "핸드폰요금", 10000.0, 0.0);
         dataRepository.dataSave(data);
 
-        Assertions.assertEquals(data.getBriefs(), "핸드폰요금");
     }
 
     @Test
@@ -35,7 +34,7 @@ class DataRepositoryTest {
         MoneyBookData data3 = new MoneyBookData("11월03일", "보너스", 120000.0, 0.0);
         dataRepository.dataSave(data3);
 
-        Assertions.assertEquals(data3.getCash(), 1020000.0);
+        Assertions.assertSame(dataRepository.isSameBalance(1020000.0), true);
     }
 
     @Test
@@ -45,5 +44,21 @@ class DataRepositoryTest {
         dataRepository.dataSave(data);
         dataRepository.removeData(1L);
         Assertions.assertNull(dataRepository.findByIdData(1L));
+    }
+
+    @Test
+    @DisplayName("데이터 수정 확인")
+    void updateData() {
+        MoneyBookData data1 = new MoneyBookData("11월01일", "월급", 1000000.0, 0.0);
+        dataRepository.dataSave(data1);
+        MoneyBookData data2 = new MoneyBookData("11월01일", "핸드폰요금", 0.0, 150000.0);
+        dataRepository.dataSave(data2);
+        MoneyBookData data3 = new MoneyBookData("11월01일", "외식", 0.0, 50000.0);
+        dataRepository.dataSave(data3);
+        System.out.println(dataRepository.findByMonthData("11월"));
+        MoneyBookData updateData = new MoneyBookData("11월01일", "핸드폰", 0.0, 200000.0);
+        dataRepository.dataUpdate(2L, updateData);
+
+        System.out.println(dataRepository.findByMonthData("11월"));
     }
 }
