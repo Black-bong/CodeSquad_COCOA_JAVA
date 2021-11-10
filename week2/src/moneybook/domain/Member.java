@@ -4,35 +4,27 @@ package moneybook.domain;
 public class Member {
 
     private Long id;
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     public Member(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public boolean isSameId(Long id) {
+        return this.id.equals(id);
+    }
+
+    public boolean isSameUserName(String name) {
+        return this.username.equals(name);
+    }
+
+    public boolean isSamePassword(String password) {
+        return this.password.equals(password);
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
