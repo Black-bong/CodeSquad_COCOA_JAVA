@@ -17,7 +17,7 @@ public class MainMenu extends MoneyBook {
 
     public void createAccount() throws IOException {
         System.out.println("사용자 이름과 비밀번호를 띄어쓰기로 구분하여 입력하세요.");
-        System.out.print(">> ");
+        inputBar();
 
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
         String username = str.nextToken();
@@ -33,7 +33,7 @@ public class MainMenu extends MoneyBook {
             createAccount();
         }
         System.out.println("사용자 이름과 비밀번호를 띄어쓰기로 구분하여 입력하세요.");
-        System.out.print(">> ");
+        inputBar();
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
         String username = str.nextToken();
         String password = str.nextToken();

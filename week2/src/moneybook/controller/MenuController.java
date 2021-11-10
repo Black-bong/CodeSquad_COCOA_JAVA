@@ -1,5 +1,6 @@
 package moneybook.controller;
 
+import moneybook.model.ReadMenu;
 import moneybook.singleton.BufferedReaderSingleton;
 import moneybook.model.MainMenu;
 import moneybook.model.SubMenu;
@@ -45,6 +46,31 @@ public class MenuController {
                 break;
             case 5:
                 subMenu.goToMainMenu();
+                break;
+        }
+    }
+
+    public void selectReadMenu() throws IOException {
+        ReadMenu readMenu = new ReadMenu();
+        this.menuNumber = Integer.parseInt(bufferedReader.readLine());
+        switch (menuNumber) {
+            case 1:
+                readMenu.briefsSearch();
+                break;
+            case 2:
+                readMenu.dateSearch();
+                break;
+            case 3:
+                readMenu.priceSearch();
+                break;
+            case 4:
+                readMenu.earningsSearch();
+                break;
+            case 5:
+                readMenu.expensesSearch();
+                break;
+            case 6:
+                readMenu.consumptionTypeSearch();
                 break;
         }
     }
