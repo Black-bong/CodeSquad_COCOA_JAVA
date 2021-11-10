@@ -1,4 +1,4 @@
-package moneybook;
+package moneybook.singleton;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
