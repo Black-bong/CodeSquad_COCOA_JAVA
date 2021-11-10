@@ -14,15 +14,16 @@ public class SubMenu extends MainMenu {
     DataRepository dataRepository = DataRepository.getInstance();
     private static final Logger LOG = Logger.getGlobal();
 
+
     public void createData() throws IOException {
-        System.out.println("날짜, 적요, 수입, 지출을 띄어쓰기로 구분하여 입력하시오.(종료:exit)");
+        System.out.println("날짜, 적요, 수입, 지출을 띄어쓰기로 구분하여 입력하시오.(입력종료:완료)");
         String date;
         System.out.print(">> ");
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
 
         try {
             date = str.nextToken();
-            if (date.equals("exit")) subMenu();
+            if (date.equals("완료")) subMenu();
 
             String briefs = str.nextToken();
             double income = Double.parseDouble(str.nextToken());
@@ -43,31 +44,35 @@ public class SubMenu extends MainMenu {
         System.out.println("조회 할 월을 입력하세요.");
         System.out.print(">> ");
         String date = bufferedReader.readLine();
-
-        List<MoneyBookData> data = dataRepository.findAllData();
-
-        for (MoneyBookData d : data) {
-            if (d.getDate().substring(0, 3).equals(date)) {
-                System.out.println(d.toString());
+        List<MoneyBookData> bookData = dataRepository.findByMonthData(date);
+        try {
+            for (MoneyBookData data : bookData) {
+                System.out.println(data);
             }
+        } catch (NullPointerException e) {
+            System.out.println(e.toString());
+        } finally {
+            subMenu();
         }
-        subMenu();
     }
 
     public void updateData() throws IOException {
         System.out.println("수정할 데이터의 번호를 입력하시오.");
         System.out.print(">> ");
         Long id = Long.parseLong(bufferedReader.readLine());
-        MoneyBookData data = dataRepository.findByIdData(id);
 
         System.out.println("날짜, 적요, 수입, 지출을 띄어쓰기로 구분하여 입력하시오.");
         System.out.print(">> ");
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
 
-        data.setDate(str.nextToken());
-        data.setBriefs(str.nextToken());
-        data.setIncome(Double.parseDouble(str.nextToken()));
-        data.setExpenses(Double.parseDouble(str.nextToken()));
+        String date = str.nextToken();
+        String briefs = str.nextToken();
+        double income = Double.parseDouble(str.nextToken());
+        double expenses = Double.parseDouble(str.nextToken());
+
+        MoneyBookData data = new MoneyBookData(date, briefs, income, expenses);
+        dataRepository.dataUpdate(id, data);
+
         subMenu();
     }
 
