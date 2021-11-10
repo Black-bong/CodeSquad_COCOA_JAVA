@@ -29,6 +29,8 @@ class MemberRepositoryTest {
         Assertions.assertSame(memberRepository.isSameMember("blackBong1", "1"), true);
         Assertions.assertSame(memberRepository.isSameMember("blackBong2", "12"), true);
         Assertions.assertSame(memberRepository.isSameMember("blackBong3", "123"), true);
+        Assertions.assertSame(memberRepository.isSameMember("black", "123"), false);
+        Assertions.assertSame(memberRepository.isSameMember("blackBong3", "1"), false);
     }
 
     @Test
