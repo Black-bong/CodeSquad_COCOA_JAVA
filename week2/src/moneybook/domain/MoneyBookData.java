@@ -1,75 +1,52 @@
 package moneybook.domain;
 
-public class MoneyBookData {
-    private Long dataID;
-    private String date;
-    private String briefs;
-    private Double income;
-    private Double expenses;
-    private Double cash = 0.0;
+import moneybook.repository.DataRepository;
 
-    public MoneyBookData(String date, String briefs, Double income, Double expenses) {
+public class MoneyBookData extends DataRepository {
+    private Long dataID;
+    private final String date;
+    private final String briefs;
+    private final double earnings;
+    private final double expenses;
+    private double balanceTempValue;
+    private final double balance;
+
+    public MoneyBookData(String date, String briefs, double earnings, double expenses) {
         this.date = date;
         this.briefs = briefs;
-        this.income = income;
+        this.earnings = earnings;
         this.expenses = expenses;
-    }
-
-    public Double getCash() {
-        return cash;
-    }
-
-    public void setCash(Double cash) {
-        this.cash = cash;
-    }
-
-    public Long getDataID() {
-        return dataID;
+        this.balance = earnings - expenses;
+        this.balanceTempValue = balance + saveBalance;
     }
 
     public void setDataID(Long dataID) {
         this.dataID = dataID;
     }
 
-    public String getDate() {
-        return date;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public double getBalanceTempValue() {
+        return balanceTempValue;
     }
 
-    public String getBriefs() {
-        return briefs;
+    public boolean isSameDate(String date) {
+        return this.date.substring(0, 3).equals(date);
     }
 
-    public void setBriefs(String briefs) {
-        this.briefs = briefs;
-    }
-
-    public Double getIncome() {
-        return income;
-    }
-
-    public void setIncome(Double income) {
-        this.income = income;
-    }
-
-    public Double getExpenses() {
-        return expenses;
-    }
-
-    public void setExpenses(Double expenses) {
-        this.expenses = expenses;
+    public void updateBalance(double n) {
+        this.balanceTempValue = n;
     }
 
     @Override
     public String toString() {
-        return getDataID() + " "
-                + "날짜:" + getDate() + " "
-                + "적요:" + getBriefs() + " "
-                + "수입:" + getIncome() + "원 "
-                + "지출:" + getExpenses() + "원 "
-                + "잔액:" + getCash() + "원";
+        return this.dataID + " "
+                + "날짜:" + this.date + " "
+                + "적요:" + this.briefs + " "
+                + "수입:" + this.earnings + "원 "
+                + "지출:" + this.expenses + "원 "
+                + "잔액:" + this.balanceTempValue + "원";
     }
 }
