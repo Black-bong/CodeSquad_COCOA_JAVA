@@ -17,6 +17,10 @@ public class DataRepository {
     private static long sequence = 0L;
     protected static BigDecimal saveBalance = BigDecimal.ZERO;
 
+    public static DataRepository getInstance() {
+        return instance;
+    }
+
     public void dataSave(MoneyBookData data) {
         data.setDataID(++sequence);
         saveBalance = saveBalance.add(data.getBalance());
@@ -25,26 +29,8 @@ public class DataRepository {
 
     // TODO 가계부 내역 수정 및 삭제 시 잔액변동 로직 구현
     public void dataUpdate(Long id, MoneyBookData data) {
-//        saveBalance = findByIdData(id).getBalanceTempValue();
-
         dataList.put(id, data);
         findByIdData(id).setDataID(id);
-//        for (long i = id; i <= dataList.size(); i++) {
-//            if (findByIdData(i).getBalance() > 0) {
-//                LOG.info("여기까지 오냐?+");
-//                saveBalance -= findByIdData(i).getBalance();
-//            }
-//            if (findByIdData(i).getBalance() < 0) {
-//                LOG.info("여기까지 오냐?-");
-//                saveBalance += Math.abs(findByIdData(i).getBalance());
-//            }
-//            findByIdData(i).updateBalance(saveBalance+findByIdData(i).getBalance());
-//            dataList.put(i, findByIdData(i));
-//        }
-    }
-
-    public static DataRepository getInstance() {
-        return instance;
     }
 
     public MoneyBookData findByIdData(Long id) {

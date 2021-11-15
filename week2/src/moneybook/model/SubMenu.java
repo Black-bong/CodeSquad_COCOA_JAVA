@@ -14,23 +14,21 @@ public class SubMenu extends MainMenu {
     DataRepository dataRepository = DataRepository.getInstance();
     private static final Logger LOG = Logger.getGlobal();
 
-
     public void createData() throws IOException {
-        System.out.println("날짜, 적요, 수입, 지출, 소비유형을 띄어쓰기로 구분하여 입력하시오.(입력종료:완료)");
-        String date;
+        System.out.println("년월일, 적요, 수입, 지출, 소비유형을 띄어쓰기로 구분하여 입력하시오.(입력종료:완료)");
         inputBar();
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
+        String date = str.nextToken();
 
         try {
-            date = str.nextToken();
             if (date.equals("완료")) subMenu();
 
-            String briefs = str.nextToken();
-            BigDecimal income = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
+            String summary = str.nextToken();
+            BigDecimal earnings = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
             BigDecimal expenses = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
-            String consumptionType = str.nextToken();
+            String paymentType = str.nextToken();
 
-            MoneyBookData data = new MoneyBookData(date, briefs, income, expenses, consumptionType);
+            MoneyBookData data = new MoneyBookData(date, summary, earnings, expenses, paymentType);
             dataRepository.dataSave(data);
             createData();
 
@@ -55,12 +53,12 @@ public class SubMenu extends MainMenu {
         StringTokenizer str = new StringTokenizer(bufferedReader.readLine(), " ");
 
         String date = str.nextToken();
-        String briefs = str.nextToken();
-        BigDecimal income = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
+        String summary = str.nextToken();
+        BigDecimal earnings = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
         BigDecimal expenses = BigDecimal.valueOf(Long.parseLong(str.nextToken()));
-        String consumptionType = str.nextToken();
+        String paymentType = str.nextToken();
 
-        MoneyBookData data = new MoneyBookData(date, briefs, income, expenses, consumptionType);
+        MoneyBookData data = new MoneyBookData(date, summary, earnings, expenses, paymentType);
         dataRepository.dataUpdate(id, data);
 
         subMenu();
