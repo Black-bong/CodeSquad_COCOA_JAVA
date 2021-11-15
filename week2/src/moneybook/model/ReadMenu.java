@@ -7,6 +7,8 @@ import java.util.List;
 
 public class ReadMenu extends SubMenu {
 
+    Input input = new Input();
+
     public void briefsSearch() throws IOException {
         System.out.println("조회할 적요을 입력하세요.");
         inputBar();
@@ -15,7 +17,7 @@ public class ReadMenu extends SubMenu {
     }
 
     public void dateSearch() throws IOException {
-        System.out.println("조회할 날짜를 입력하세요.");
+        System.out.println("조회할 날짜를 입력하세요.(YY년MM월");
         inputBar();
         String searchData = bufferedReader.readLine();
         dataPrint(dataRepository.findByMonthData(searchData));
@@ -43,7 +45,7 @@ public class ReadMenu extends SubMenu {
     }
 
     public void consumptionTypeSearch() throws IOException {
-        System.out.println("조회할 소비유형을 입력하세요.");
+        System.out.println("조회할 소비유형을 입력하세요.(카드/현금)");
         inputBar();
         String searchData = bufferedReader.readLine();
         dataPrint(dataRepository.findByConsumptionTypeData(searchData));

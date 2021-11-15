@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Input {
-    private static final BufferedReader br = BufferedReaderSingleton.getInstance();
-
+    BufferedReader br = BufferedReaderSingleton.getInstance();
+    StringTokenizer st = new StringTokenizer("");
     public String inputString() throws IOException {
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        if (!st.hasMoreElements()) st = new StringTokenizer(br.readLine());
         return st.nextToken();
     }
 

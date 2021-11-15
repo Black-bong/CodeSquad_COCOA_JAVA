@@ -7,8 +7,8 @@ import java.math.BigDecimal;
 public class MoneyBookData extends DataRepository {
     private Long dataID;
     private final String date;
-    private final String briefs;
-    private final String consumptionType;
+    private final String summary;
+    private final String paymentType;
     private final BigDecimal earnings;
     private final BigDecimal expenses;
     private BigDecimal balanceTempValue;
@@ -16,11 +16,11 @@ public class MoneyBookData extends DataRepository {
 
     public MoneyBookData(String date, String briefs, BigDecimal earnings, BigDecimal expenses, String consumptionType) {
         this.date = date;
-        this.briefs = briefs;
+        this.summary = briefs;
         this.earnings = earnings;
         this.expenses = expenses;
         this.balance = earnings.subtract(expenses);
-        this.consumptionType = consumptionType;
+        this.paymentType = consumptionType;
         this.balanceTempValue = balance.add(saveBalance);
     }
 
@@ -40,7 +40,7 @@ public class MoneyBookData extends DataRepository {
         return this.date.substring(0, 3).equals(d);
     }
     public boolean isSameBriefs(String b) {
-        return this.briefs.equals(b);
+        return this.summary.equals(b);
     }
     public boolean isSameEarnings(String ea) {
         return this.earnings.equals(ea);
@@ -49,7 +49,7 @@ public class MoneyBookData extends DataRepository {
         return this.expenses.equals(ex);
     }
     public boolean isSameConsumptionType(String c) {
-        return this.consumptionType.equals(c);
+        return this.paymentType.equals(c);
     }
     public boolean isSameBalance(String bl) {
         return this.balance.equals(bl);
@@ -63,10 +63,10 @@ public class MoneyBookData extends DataRepository {
     public String toString() {
         return this.dataID + " "
                 + "날짜:" + this.date + " "
-                + "적요:" + this.briefs + " "
+                + "적요:" + this.summary + " "
                 + "수입:" + this.earnings + "원 "
                 + "지출:" + this.expenses + "원 "
                 + "잔액:" + this.balanceTempValue + "원 "
-                + "소비유형:" + this.consumptionType;
+                + "소비유형:" + this.paymentType;
     }
 }
