@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 public class Clock {
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_RED = "\033[1;31m";
 
     public void clockStart() {
         String[][] clock =
