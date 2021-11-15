@@ -3,7 +3,7 @@ package hangulclock.resource;
 public enum MinuteHangul {
     Il('일', 1, 4, 1),
     YI_SIP('이', 20, 3, 1),
-    YI('이', 2, 2, 4),
+    YI('이', 2, 4, 2),
     SAM_SIP('삼', 30, 3, 2),
     SAM('삼', 3, 4, 3),
     SA_SIP('사', 40, 3, 3),
