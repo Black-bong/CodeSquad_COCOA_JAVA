@@ -32,6 +32,7 @@ public class Clock {
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
+            // TODO 현재 시간의 초를 받아서 분이 바뀌는 시간을 계산한 후 변경 후에 1분마다 갱신되는 기능 추가
             public void run() {
                 String time = LocalTime.now().toString();
                 String hour = time.split(":")[0];
