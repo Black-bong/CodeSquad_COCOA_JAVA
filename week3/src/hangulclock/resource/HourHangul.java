@@ -17,6 +17,7 @@ public enum HourHangul {
     A("아", 9, 2, 0),
     HOB("홉", 9, 2, 1),
     YEOL("열", 10, 2, 2),
+    YEOL_HAN_SI("열", 11, 2, 2),
     YEOL_HAN("한", 11, 2, 3),
     YEOL_DO("두", 12, 2, 4);
 
