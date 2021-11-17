@@ -23,7 +23,7 @@ public enum CommandList {
 
     public static long commandList(String command) {
         for (var c : CommandList.values()) {
-            if(c.isSamCommand(command)) {
+            if (c.isSamCommand(command)) {
                 return c.commandID;
             }
         }
