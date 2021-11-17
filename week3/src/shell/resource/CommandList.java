@@ -2,15 +2,15 @@ package shell.resource;
 
 
 public enum CommandList {
-    C1("pwd", 1),
-    C2("mkdir", 2),
-    C3("rm", 3),
-    C4("cd", 4),
-    C5("ls", 5),
-    C6("clock", 6);
+    C1("pwd", 0),
+    C2("mkdir", 1),
+    C3("rm", 2),
+    C4("cd", 3),
+    C5("ls", 4),
+    C6("clock", 5);
 
     private final String command;
-    private final long commandID;
+    private final int commandID;
 
     CommandList(String command, int commandID) {
         this.command = command;
@@ -21,12 +21,12 @@ public enum CommandList {
         return this.command.equals(command);
     }
 
-    public static long commandList(String command) {
+    public static int commandList(String command) {
         for (var c : CommandList.values()) {
             if (c.isSamCommand(command)) {
                 return c.commandID;
             }
         }
-        return 0L;
+        throw new IllegalArgumentException();
     }
 }

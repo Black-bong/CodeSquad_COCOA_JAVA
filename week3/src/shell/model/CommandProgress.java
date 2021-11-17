@@ -2,7 +2,7 @@ package shell.model;
 
 public class CommandProgress {
 
-    public static void mkdir() {
+    public void mkdir() {
 
     }
 
