@@ -3,14 +3,11 @@ package hangulclock;
 import hangulclock.resource.HourHangul;
 import hangulclock.resource.MinuteHangul;
 
-import java.lang.reflect.Array;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Clock {
+    private static long hour;
+    private static long minute;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\033[1;31m";
 
@@ -22,33 +19,20 @@ public class Clock {
                         {"자", "이", "삼", "사", "오", "십"},
                         {"정", "일", "이", "삼", "사", "육"},
                         {"오", "오", "칠", "팔", "구", "분"}};
-
         HourHangul[] hourHangul = HourHangul.values();
         MinuteHangul[] minuteHangul = MinuteHangul.values();
-        timer(clock, hourHangul, minuteHangul);
+        LocalTime localTime = LocalTime.now();
+        hour = localTime.getHour();
+        minute = localTime.getMinute();
+        long hourValue = hour % 12;
+
+        createHour(clock, hourValue, hourHangul);
+        createMinute(clock, minute, minuteHangul);
+        midnight(clock, hour);
+        printClock(clock);
     }
 
-    private void timer(String[][] clock, HourHangul[] hourHangul, MinuteHangul[] minuteHangul) {
-        Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            // TODO 현재 시간의 초를 받아서 분이 바뀌는 시간을 계산한 후 변경 후에 1분마다 갱신되는 기능 추가
-            public void run() {
-                LocalTime localTime = LocalTime.now();
-                int hour = localTime.getHour();
-                int minute = localTime.getMinute();
-                int seconds = localTime.getSecond();
-                int hourValue = hour % 12;
-                createHour(clock, hourValue, hourHangul);
-                createMinute(clock, minute, minuteHangul);
-                midnight(clock, hour);
-                printClock(clock);
-            }
-        };
-        timer.schedule(timerTask, 0, 5000);
-    }
-
-    private void createHour(String[][] clock, int hourValue, HourHangul[] hourHangul) {
+    private void createHour(String[][] clock, long hourValue, HourHangul[] hourHangul) {
         clock[2][5] = ANSI_RED + "시" + ANSI_RESET;
         for (HourHangul hangul : hourHangul) {
             if (hourValue == hangul.getHour()) {
@@ -57,12 +41,12 @@ public class Clock {
         }
     }
 
-    private void createMinute(String[][] clock, int minute, MinuteHangul[] minuteHangul) {
+    private void createMinute(String[][] clock, long minute, MinuteHangul[] minuteHangul) {
         if (minute != 0) {
             clock[5][5] = ANSI_RED + "분" + ANSI_RESET;
         }
-        int digit1 = minute % 10;
-        int digit10 = minute - digit1;
+        long digit1 = minute % 10;
+        long digit10 = minute - digit1;
         for (MinuteHangul hangul : minuteHangul) {
             if (minute > 10) {
                 clock[3][5] = ANSI_RED + "십" + ANSI_RESET;
@@ -82,15 +66,17 @@ public class Clock {
     }
 
     private void printClock(String[][] clock) {
+        System.out.println("====한글시계====");
         for (String[] chars : clock) {
             for (String aChar : chars) {
                 System.out.print(aChar + " ");
             }
             System.out.println();
         }
+        System.out.println();
     }
 
-    private void midnight(String[][] clock, int hour) {
+    private void midnight(String[][] clock, long hour) {
         if (hour == 12) {
             clock[4][0] = ANSI_RED + "정" + ANSI_RESET;
             clock[5][0] = ANSI_RED + "오" + ANSI_RESET;
