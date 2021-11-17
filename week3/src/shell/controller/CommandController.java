@@ -5,7 +5,7 @@ import shell.model.CommandProgress;
 import java.io.IOException;
 
 public class CommandController {
-    public void selectCommand(int id) throws IOException {
+    public void selectCommand(int id, String comm) throws IOException {
         //TODO 스위치를 사용안하고 입력된 명령어를 구분할 수 있는 방법을 찾아보자.
         CommandProgress commandProgress = new CommandProgress();
         switch (id) {
@@ -13,13 +13,13 @@ public class CommandController {
             commandProgress.pwd();
             break;
             case 1:
-            commandProgress.mkdir();
+            commandProgress.mkdir(comm);
             break;
             case 2:
-            commandProgress.rm();
+            commandProgress.rm(comm);
             break;
             case 3:
-            commandProgress.cd();
+            commandProgress.cd(comm);
             break;
             case 4:
             commandProgress.ls();
