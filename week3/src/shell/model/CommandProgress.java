@@ -31,6 +31,8 @@ public class CommandProgress {
 
     public void pwd() throws IOException {
         LOG.info("pwd 명령어");
+        String directoryName = System.getProperty("user.dir");
+        System.out.println(directoryName);
         shellMain.shellMainScreen();
     }
 }
