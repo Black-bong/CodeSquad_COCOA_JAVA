@@ -34,14 +34,13 @@ public class Clock {
             @Override
             // TODO 현재 시간의 초를 받아서 분이 바뀌는 시간을 계산한 후 변경 후에 1분마다 갱신되는 기능 추가
             public void run() {
-                String time = LocalTime.now().toString();
-                String hour = time.split(":")[0];
-                String minute = time.split(":")[1];
-                String seconds = time.split(":")[2];
-                int hourValue = Integer.parseInt(hour) % 12;
-                int minuteValue = Integer.parseInt(minute);
+                LocalTime localTime = LocalTime.now();
+                int hour = localTime.getHour();
+                int minute = localTime.getMinute();
+                int seconds = localTime.getSecond();
+                int hourValue = hour % 12;
                 createHour(clock, hourValue, hourHangul);
-                createMinute(clock, minuteValue, minuteHangul);
+                createMinute(clock, minute, minuteHangul);
                 midnight(clock, hour);
                 printClock(clock);
             }
@@ -58,14 +57,14 @@ public class Clock {
         }
     }
 
-    private void createMinute(String[][] clock, int minuteValue, MinuteHangul[] minuteHangul) {
-        if (minuteValue != 0) {
+    private void createMinute(String[][] clock, int minute, MinuteHangul[] minuteHangul) {
+        if (minute != 0) {
             clock[5][5] = ANSI_RED + "분" + ANSI_RESET;
         }
-        int digit1 = minuteValue % 10;
-        int digit10 = minuteValue - digit1;
+        int digit1 = minute % 10;
+        int digit10 = minute - digit1;
         for (MinuteHangul hangul : minuteHangul) {
-            if (minuteValue > 10) {
+            if (minute > 10) {
                 clock[3][5] = ANSI_RED + "십" + ANSI_RESET;
                 if (digit10 == hangul.getMinute()) {
                     clock[hangul.getFirstIndex()][hangul.getLastIndex()] = ANSI_RED + hangul.getHangul() + ANSI_RESET;
@@ -74,7 +73,7 @@ public class Clock {
                     clock[hangul.getFirstIndex()][hangul.getLastIndex()] = ANSI_RED + hangul.getHangul() + ANSI_RESET;
                 }
             }
-            if (minuteValue < 10) {
+            if (minute < 10) {
                 if (digit1 == hangul.getMinute()) {
                     clock[hangul.getFirstIndex()][hangul.getLastIndex()] = ANSI_RED + hangul.getHangul() + ANSI_RESET;
                 }
@@ -91,12 +90,12 @@ public class Clock {
         }
     }
 
-    private void midnight(String[][] clock, String hour) {
-        if (Integer.parseInt(hour) == 12) {
+    private void midnight(String[][] clock, int hour) {
+        if (hour == 12) {
             clock[4][0] = ANSI_RED + "정" + ANSI_RESET;
             clock[5][0] = ANSI_RED + "오" + ANSI_RESET;
         }
-        if (Integer.parseInt(hour) == 24) {
+        if (hour == 24) {
             clock[3][0] = ANSI_RED + "자" + ANSI_RESET;
             clock[4][0] = ANSI_RED + "정" + ANSI_RESET;
         }
