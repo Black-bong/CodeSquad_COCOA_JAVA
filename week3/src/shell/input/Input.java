@@ -18,6 +18,7 @@ public class Input {
         String firstInputString = null;
         String secondInputString;
         String inputTrim = null;
+        //TODO 코드가 너무 지저분하다
         try {
             firstInputString = str.nextToken();
             inputTrim = str.nextToken();

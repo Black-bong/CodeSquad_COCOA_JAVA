@@ -10,32 +10,32 @@ public class CommandController {
         CommandProgress commandProgress = new CommandProgress();
         switch (id) {
             case 0:
-            commandProgress.pwd();
-            break;
+                commandProgress.pwd();
+                break;
             case 1:
-            commandProgress.mkdir(firstComm);
-            break;
+                commandProgress.mkdir(firstComm);
+                break;
             case 2:
-            commandProgress.rm(firstComm);
-            break;
+                commandProgress.rm(firstComm);
+                break;
             case 3:
-            commandProgress.cd(firstComm);
-            break;
+                commandProgress.cd(firstComm);
+                break;
             case 4:
-            commandProgress.ls();
-            break;
+                commandProgress.ls();
+                break;
             //TODO case 5: 한글시계 보이는 명령어 추가
             case 5:
-            break;
+                break;
             case 6:
-            System.exit(0);
-            break;
+                System.exit(0);
+                break;
             case 7:
-            commandProgress.cp(firstComm, secondComm);
-            break;
+                commandProgress.cp(firstComm, secondComm);
+                break;
             case 8:
-            commandProgress.touch(firstComm);
-            break;
+                commandProgress.touch(firstComm);
+                break;
         }
     }
 }
