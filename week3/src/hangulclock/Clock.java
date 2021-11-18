@@ -2,16 +2,35 @@ package hangulclock;
 
 import hangulclock.resource.HourHangul;
 import hangulclock.resource.MinuteHangul;
+import shell.Shell;
 
+import java.io.IOException;
 import java.time.LocalTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Clock {
-    private static long hour;
-    private static long minute;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\033[1;31m";
+    Shell shell = new Shell();
 
-    public void clockStart() {
+    public void clockStart() throws IOException {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    runClock();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        timer.schedule(timerTask, 0, 60000);
+        shell.Start();
+    }
+
+    private void runClock() throws IOException {
         String[][] clock =
                 {{"한", "두", "세", "네", "다", "섯"},
                         {"여", "섯", "일", "곱", "여", "덟"},
@@ -22,8 +41,8 @@ public class Clock {
         HourHangul[] hourHangul = HourHangul.values();
         MinuteHangul[] minuteHangul = MinuteHangul.values();
         LocalTime localTime = LocalTime.now();
-        hour = localTime.getHour();
-        minute = localTime.getMinute();
+        long hour = localTime.getHour();
+        long minute = localTime.getMinute();
         long hourValue = hour % 12;
 
         createHour(clock, hourValue, hourHangul);
@@ -66,6 +85,7 @@ public class Clock {
     }
 
     private void printClock(String[][] clock) {
+        System.out.println();
         System.out.println("====한글시계====");
         for (String[] chars : clock) {
             for (String aChar : chars) {
