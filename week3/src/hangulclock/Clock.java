@@ -4,14 +4,24 @@ import hangulclock.resource.HourHangul;
 import hangulclock.resource.MinuteHangul;
 
 import java.time.LocalTime;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Clock {
-    private static long hour;
-    private static long minute;
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\033[1;31m";
 
     public void clockStart() {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                runClock();
+            }
+        };timer.schedule(timerTask, 0, 60000);
+    }
+
+    private void runClock() {
         String[][] clock =
                 {{"한", "두", "세", "네", "다", "섯"},
                         {"여", "섯", "일", "곱", "여", "덟"},
@@ -22,8 +32,8 @@ public class Clock {
         HourHangul[] hourHangul = HourHangul.values();
         MinuteHangul[] minuteHangul = MinuteHangul.values();
         LocalTime localTime = LocalTime.now();
-        hour = localTime.getHour();
-        minute = localTime.getMinute();
+        long hour = localTime.getHour();
+        long minute = localTime.getMinute();
         long hourValue = hour % 12;
 
         createHour(clock, hourValue, hourHangul);
