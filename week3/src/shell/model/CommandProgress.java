@@ -74,8 +74,18 @@ public class CommandProgress {
         shellMain.shellMainScreen();
     }
 
-    public void cp(String firstComm, String secondComm) {
-
+    public void cp(String firstComm, String secondComm) throws IOException {
+        LOG.info("cp 명령어");
+        Path newPath = Paths.get(path.toString(), firstComm);
+        Path copyPath = Paths.get(path.toString(), secondComm);
+        try {
+            Files.copy(newPath, copyPath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (NoSuchFileException e) {
+            System.out.println("rm: " + firstComm + ": No such file or directory");
+        }
+        finally {
+            shellMain.shellMainScreen();
+        }
     }
 
     public void touch(String firstComm) throws IOException {
