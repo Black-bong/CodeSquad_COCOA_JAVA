@@ -15,13 +15,24 @@ public class Input {
     public List<String> string() throws IOException {
         List<String> inputValue = new ArrayList<>();
         StringTokenizer str = new StringTokenizer(buf.readLine(), " ");
-        String inputString = str.nextToken();
+        String firstInputString = null;
+        String secondInputString;
+        String inputTrim = null;
         try {
-            String inputTrim = str.nextToken();
-            inputValue.add(inputString);
+            firstInputString = str.nextToken();
+            inputTrim = str.nextToken();
+            secondInputString = str.nextToken();
+            inputValue.add(firstInputString);
             inputValue.add(inputTrim);
+            inputValue.add(secondInputString);
         } catch (NoSuchElementException e) {
-            inputValue.add(inputString);
+            inputValue.add(firstInputString);
+            inputValue.add(inputTrim);
+            inputValue.add("");
+            return inputValue;
+        } catch (Exception e) {
+            inputValue.add(firstInputString);
+            inputValue.add("");
             inputValue.add("");
             return inputValue;
         }

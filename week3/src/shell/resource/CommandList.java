@@ -8,7 +8,9 @@ public enum CommandList {
     C4("cd", 3),
     C5("ls", 4),
     C6("clock", 5),
-    C7("exit", 6);
+    C7("exit", 6),
+    C8("cp", 7),
+    C9("touch", 8);
 
     private final String command;
     private final int commandID;

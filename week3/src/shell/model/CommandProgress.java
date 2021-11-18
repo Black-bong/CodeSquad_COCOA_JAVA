@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class CommandProgress {
     private static final Logger LOG = Logger.getGlobal();
-    Path path;
+    private final Path path;
     ShellMain shellMain = new ShellMain();
 
     public CommandProgress() {
@@ -72,5 +72,21 @@ public class CommandProgress {
         LOG.info("pwd 명령어");
         System.out.println(path);
         shellMain.shellMainScreen();
+    }
+
+    public void cp(String firstComm, String secondComm) {
+
+    }
+
+    public void touch(String firstComm) throws IOException {
+        LOG.info("touch 명령어");
+        Path newPath = Paths.get(path.toString(), firstComm);
+        try {
+            Files.createFile(newPath);
+        } catch (FileAlreadyExistsException e) {
+            System.out.println("touch: " + firstComm + ": File exists");
+        } finally {
+            shellMain.shellMainScreen();
+        }
     }
 }

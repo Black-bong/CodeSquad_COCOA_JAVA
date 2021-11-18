@@ -18,8 +18,9 @@ public class ShellMain {
 
         try {
             int commandID = CommandList.commandList(inputString.get(0));
-            String additionalCommand = inputString.get(1);
-            commandController.selectCommand(commandID, additionalCommand);
+            String firstAdditionalCommand = inputString.get(1);
+            String secondAdditionalCommand = inputString.get(2);
+            commandController.selectCommand(commandID, firstAdditionalCommand, secondAdditionalCommand);
         } catch (IllegalArgumentException e) {
             System.out.println("존재하지 않는 명령어 입니다.");
             shellMainScreen();
