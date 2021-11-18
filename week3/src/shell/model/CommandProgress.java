@@ -2,6 +2,8 @@ package shell.model;
 
 import shell.view.ShellMain;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
@@ -33,11 +35,28 @@ public class CommandProgress {
 
     public void ls() throws IOException {
         LOG.info("ls 명령어");
+        File ls = new File(path.toString());
+        StringBuilder sb = new StringBuilder();
+
+        String[] fileList = ls.list(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return !name.startsWith(".");
+            }
+        });
+        assert fileList != null;
+        for (var fileName : fileList) {
+            sb.append(fileName).append(" ");
+        }
+
+        System.out.print(sb);
+        System.out.println();
         shellMain.shellMainScreen();
     }
 
     public void cd(String c) throws IOException {
         LOG.info("cd 명령어");
+
         shellMain.shellMainScreen();
     }
 
