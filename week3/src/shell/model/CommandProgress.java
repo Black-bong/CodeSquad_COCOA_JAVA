@@ -2,22 +2,33 @@ package shell.model;
 
 import shell.view.ShellMain;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public class CommandProgress {
     private static final Logger LOG = Logger.getGlobal();
-    private File directory = new File(System.getProperty("user.dir")).getAbsoluteFile();
+    Path path;
     ShellMain shellMain = new ShellMain();
+
+    public CommandProgress() {
+        this.path = Paths.get("").toAbsolutePath();
+    }
 
     //TODO 디렉토리가 아니라 파일이 생성된다.. 좀더 알아보자
     public void mkdir(String c) throws IOException {
         LOG.info("mkdir 명령어");
-        PrintWriter output = null;
-        output = new PrintWriter(new File(c).getAbsoluteFile());
-        shellMain.shellMainScreen();
+        Path newPath = Paths.get(path.toString(), c);
+        try {
+            Files.createDirectory(newPath);
+        } catch (FileAlreadyExistsException e) {
+            System.out.println("mkdir: " + c + ": File exists");
+        } finally {
+            shellMain.shellMainScreen();
+        }
     }
 
     public void ls() throws IOException {
@@ -37,7 +48,7 @@ public class CommandProgress {
 
     public void pwd() throws IOException {
         LOG.info("pwd 명령어");
-        System.out.println(directory);
+        System.out.println(path);
         shellMain.shellMainScreen();
     }
 }
