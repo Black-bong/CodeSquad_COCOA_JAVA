@@ -5,10 +5,7 @@ import shell.view.ShellMain;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.logging.Logger;
 
 public class CommandProgress {
@@ -35,10 +32,10 @@ public class CommandProgress {
 
     public void ls() throws IOException {
         LOG.info("ls 명령어");
-        File ls = new File(path.toString());
-        StringBuilder sb = new StringBuilder();
 
-        String[] fileList = ls.list(new FilenameFilter() {
+        StringBuilder sb = new StringBuilder();
+        File file = new File(path.toString());
+        String[] fileList = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
                 return !name.startsWith(".");
@@ -56,13 +53,19 @@ public class CommandProgress {
 
     public void cd(String c) throws IOException {
         LOG.info("cd 명령어");
-
         shellMain.shellMainScreen();
     }
 
     public void rm(String c) throws IOException {
         LOG.info("rm 명령어");
-        shellMain.shellMainScreen();
+        try {
+            Files.delete(Path.of(path.toString() + "/" + c));
+        } catch (NoSuchFileException e) {
+            System.out.println("rm: " + c + ": No such file or directory");
+        }
+        finally {
+            shellMain.shellMainScreen();
+        }
     }
 
     public void pwd() throws IOException {
