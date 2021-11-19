@@ -1,7 +1,7 @@
 package programmers;
 
 // 로또의 최고 순위와 최저 순위
-class Solution {
+class Solution77484 {
     public int[] solution(int[] lottos, int[] win_nums) {
         int score = 7;
         int zero = 0;
@@ -25,7 +25,4 @@ class Solution {
         int[] answer = {score, zero + score};
         return answer;
     }
-}
-
-public class Pgm77484 {
 }
