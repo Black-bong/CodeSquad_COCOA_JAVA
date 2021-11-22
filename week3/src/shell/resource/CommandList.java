@@ -2,15 +2,15 @@ package shell.resource;
 
 
 public enum CommandList {
-    C1("pwd", 0),
-    C2("mkdir", 1),
-    C3("rm", 2),
-    C4("cd", 3),
-    C5("ls", 4),
-    C6("clock", 5),
-    C7("exit", 6),
-    C8("cp", 7),
-    C9("touch", 8);
+    PWD("pwd", 0),
+    MKDIR("mkdir", 1),
+    RM("rm", 2),
+    CD("cd", 3),
+    LS("ls", 4),
+    CLOCK("clock", 5),
+    EXIT("exit", 6),
+    CP("cp", 7),
+    TOUCH("touch", 8);
 
     private final String command;
     private final int commandID;
