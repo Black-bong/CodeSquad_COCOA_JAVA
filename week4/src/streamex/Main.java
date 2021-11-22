@@ -13,6 +13,6 @@ public class Main {
         memberList.forEach(System.out::println);
         int totalPrice = memberList.stream().mapToInt(s -> s.getTravelPrice().getPrice()).sum();
         System.out.println(totalPrice + "만원");
-        memberList.stream().filter(a -> a.getAge() >= 20).map(c -> c.getName()).sorted().forEach(System.out::println);
+        memberList.stream().filter(a -> a.getAge() >= 20).map(c -> c.getName()).filter(c -> c.contains("김")).sorted().forEach(System.out::println);
     }
 }
