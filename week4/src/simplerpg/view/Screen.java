@@ -16,14 +16,16 @@ public class Screen {
         System.out.print("> ");
     }
 
-    public void printGameWinner() {
+    public void printGameWinner(int score) {
         System.out.println("몬스터를 처치했습니다.");
-        System.out.println("게임승리");
-        System.exit(0);
+        System.out.println("점수획득");
+        System.out.println("현재 점수: " + score);
+        System.out.println("==게임시작==");
     }
 
-    public void printGameOver() {
+    public void printGameOver(int totalScore) {
         System.out.println("함정에 걸렸습니다.");
+        System.out.println("최종 점수: " + totalScore);
         System.out.println("게임오버");
         System.exit(0);
     }

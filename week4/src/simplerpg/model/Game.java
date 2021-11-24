@@ -11,10 +11,11 @@ public class Game extends Screen {
     get,set 사용을 줄일려고 이곳에 위치를 저장했는데.. 이럴거였으면 객체로 따로 분리시킨 이유가 있을까..
     이곳에 저장된 값을 사용하지 말고 객체로 값을 보내거나 해서 비교하고 위치를 저장할 수 있는 방법을 생각해보자
      */
-    String[][] gameMap = new String[5][5];
-    int[] monsterLocation = new int[2];
-    int[] trapLocation = new int[2];
-    int[] playerLocation = new int[2];
+    private String[][] gameMap = new String[5][5];
+    private int[] monsterLocation = new int[2];
+    private int[] trapLocation = new int[2];
+    private int[] playerLocation = new int[2];
+    private int gameScore = 0;
 
     public void startGame() {
         createMap();
@@ -56,21 +57,24 @@ public class Game extends Screen {
             playingGame();
         }
         if (playerLocation[0] == monsterLocation[0] && playerLocation[1] == monsterLocation[1]) {
-            gameWinner();
+            gameScore += 100;
+            Score score = new Score(gameScore);
+            gameWinner(score.getGameScore());
+            startGame();
         }
         if (playerLocation[0] == trapLocation[0] && playerLocation[1] == trapLocation[1]) {
-            gameOver();
+            gameOver(gameScore);
         }
         printMap();
         playingGame();
     }
 
-    private void gameOver() {
-        printGameOver();
+    private void gameOver(int s) {
+        printGameOver(s);
     }
 
-    private void gameWinner() {
-        printGameWinner();
+    private void gameWinner(int s) {
+        printGameWinner(s);
     }
 
     private void createTrap() {
