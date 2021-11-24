@@ -4,8 +4,8 @@ public enum GameKey {
     UP("W", -1, 0),
     LEFT("A", 0, -1),
     RIGHT("D", 0, 1),
-    DOWN("S", 1 , 0);
-    
+    DOWN("S", 1, 0);
+
     private final String inputKey;
     private final int locationX;
     private final int locationY;
