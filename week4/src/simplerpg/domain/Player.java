@@ -5,7 +5,7 @@ public class Player implements Location {
     private int locationY;
 
     public Player() {
-        startLocate();
+
     }
 
     public int getLocationX() {
@@ -17,8 +17,8 @@ public class Player implements Location {
     }
 
     @Override
-    public void startLocate() {
-        this.locationX = 2;
-        this.locationY = 2;
+    public void startLocate(int x, int y) {
+        this.locationX = x;
+        this.locationY = y;
     }
 }

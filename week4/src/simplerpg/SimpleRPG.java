@@ -1,8 +1,10 @@
 package simplerpg;
 
+import simplerpg.view.Screen;
+
 public class SimpleRPG {
     public static void main(String[] args) {
-        Game game = new Game();
-        game.start();
+        Screen screen = new Screen();
+        screen.printMainScreen();
     }
 }

@@ -1,13 +1,13 @@
 package simplerpg.view;
 
-import simplerpg.domain.Map;
+
+import simplerpg.controller.Menu;
 
 public class Screen {
+
     public void printMainScreen() {
-        for (int i = 0; i < 50; i++) {
-            Map map = new Map();
-            System.out.println("==게임시작==");
-            map.printMap();
-        }
+        Menu menu = new Menu();
+        System.out.println("==게임시작==");
+        menu.startMenu();
     }
 }
