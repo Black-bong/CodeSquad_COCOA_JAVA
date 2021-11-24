@@ -35,10 +35,15 @@ public class Game extends Screen {
     }
 
     private void moveToPlayer(int[] index) {
-        gameMap[playerLocation[0]][playerLocation[1]] = "* ";
-        gameMap[playerLocation[0] + index[0]][playerLocation[1] + index[1]] = "P ";
-        playerLocation[0] += index[0];
-        playerLocation[1] += index[1];
+        try {
+            gameMap[playerLocation[0]][playerLocation[1]] = "* ";
+            gameMap[playerLocation[0] + index[0]][playerLocation[1] + index[1]] = "P ";
+            playerLocation[0] += index[0];
+            playerLocation[1] += index[1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("맵의 범위를 벗어났습니다.");
+            playingGame();
+        }
         printMap();
         playingGame();
     }
