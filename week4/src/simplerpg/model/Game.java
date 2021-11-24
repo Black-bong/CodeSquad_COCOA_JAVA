@@ -6,7 +6,11 @@ import simplerpg.resource.GameKey;
 import simplerpg.view.Screen;
 
 public class Game extends Screen {
-
+    //TODO 구현 후 리팩토링 최우선 과제
+    /*
+    get,set 사용을 줄일려고 이곳에 위치를 저장했는데.. 이럴거였으면 객체로 따로 분리시킨 이유가 있을까..
+    이곳에 저장된 값을 사용하지 말고 객체로 값을 보내거나 해서 비교하고 위치를 저장할 수 있는 방법을 생각해보자
+     */
     String[][] gameMap = new String[5][5];
     int[] monsterLocation = new int[2];
     int[] trapLocation = new int[2];
@@ -51,8 +55,22 @@ public class Game extends Screen {
             System.out.println("맵의 범위를 벗어났습니다.");
             playingGame();
         }
+        if (playerLocation[0] == monsterLocation[0] && playerLocation[1] == monsterLocation[1]) {
+            gameWinner();
+        }
+        if (playerLocation[0] == trapLocation[0] && playerLocation[1] == trapLocation[1]) {
+            gameOver();
+        }
         printMap();
         playingGame();
+    }
+
+    private void gameOver() {
+        printGameOver();
+    }
+
+    private void gameWinner() {
+        printGameWinner();
     }
 
     private void createTrap() {
@@ -60,7 +78,7 @@ public class Game extends Screen {
         trap.startLocate(monsterLocation[0], monsterLocation[1]);
         trapLocation[0] = trap.getLocationX();
         trapLocation[1] = trap.getLocationY();
-        gameMap[trapLocation[0]][trapLocation[1]] = "T ";
+        gameMap[trapLocation[0]][trapLocation[1]] = "* ";
     }
 
     private void createMonster() {
