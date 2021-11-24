@@ -29,9 +29,16 @@ public class Game extends Screen {
 
     private void inputKey(Input input) {
         int[] keyIndex;
-        String inputKey = input.inputString();
-        keyIndex = GameKey.gameKeyList(inputKey);
-        moveToPlayer(keyIndex);
+        try {
+            String inputKey = input.inputString();
+            keyIndex = GameKey.gameKeyList(inputKey);
+            moveToPlayer(keyIndex);
+        } catch (IllegalArgumentException e) {
+            System.out.println("잘못된 값을 입력했습니다.");
+            System.out.println("다시 입력해주세요.");
+            printInputBar();
+            inputKey(input);
+        }
     }
 
     private void moveToPlayer(int[] index) {
