@@ -21,7 +21,7 @@
    - 람다하다가 하루가 끝나버렸다..
 
 ## 21.11.24(day_18)
-- -[X] SimpleRPG 구현
+- -[X] SimpleRPG 구현 <a href = https://github.com/Black-bong/CodeSquad_COCOA_JAVA/tree/master/week4/src/simplerpg>코드</a>
    - -[X] 플레이어가 맵에 생성되고 움직이는가?
    - -[X] 함정과 몬스터가 맵에 랜덤으로 생성되며, 위치가 중복되지 않는가?
    - -[X] 맵의 범위를 벗어나거나 입력값이 잘못되었을때 예외처리가 되는가?
