@@ -1,12 +1,16 @@
 package simplerpg.model;
 
+import simplerpg.controller.Input;
 import simplerpg.domain.*;
+import simplerpg.resource.GameKey;
+import simplerpg.view.Screen;
 
-public class Game {
+public class Game extends Screen {
 
     String[][] gameMap = new String[5][5];
     int[] monsterLocation = new int[2];
     int[] trapLocation = new int[2];
+    int[] keyIndex = new int[2];
 
     public void startGame() {
         createMap();
@@ -14,6 +18,18 @@ public class Game {
         createMonster();
         createTrap();
         printMap();
+        playingGame();
+    }
+
+    public void playingGame() {
+        Input input = new Input();
+        printInputBar();
+        inputKey(input);
+    }
+
+    private void inputKey(Input input) {
+        String inputKey = input.inputString();
+        keyIndex = GameKey.gameKeyList(inputKey);
     }
 
     private void createTrap() {
