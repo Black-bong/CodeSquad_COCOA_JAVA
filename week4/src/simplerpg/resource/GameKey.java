@@ -1,10 +1,10 @@
 package simplerpg.resource;
 
 public enum GameKey {
-    UP("W", 0, 1),
-    LEFT("A", -1, 0),
-    RIGHT("D", 1, 0),
-    DOWN("S", 0 , -1);
+    UP("W", -1, 0),
+    LEFT("A", 0, -1),
+    RIGHT("D", 0, 1),
+    DOWN("S", 1 , 0);
     
     private final String inputKey;
     private final int locationX;

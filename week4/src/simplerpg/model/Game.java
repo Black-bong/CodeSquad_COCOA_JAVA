@@ -10,7 +10,7 @@ public class Game extends Screen {
     String[][] gameMap = new String[5][5];
     int[] monsterLocation = new int[2];
     int[] trapLocation = new int[2];
-    int[] keyIndex = new int[2];
+    int[] playerLocation = new int[2];
 
     public void startGame() {
         createMap();
@@ -28,8 +28,19 @@ public class Game extends Screen {
     }
 
     private void inputKey(Input input) {
+        int[] keyIndex;
         String inputKey = input.inputString();
         keyIndex = GameKey.gameKeyList(inputKey);
+        moveToPlayer(keyIndex);
+    }
+
+    private void moveToPlayer(int[] index) {
+        gameMap[playerLocation[0]][playerLocation[1]] = "* ";
+        gameMap[playerLocation[0] + index[0]][playerLocation[1] + index[1]] = "P ";
+        playerLocation[0] += index[0];
+        playerLocation[1] += index[1];
+        printMap();
+        playingGame();
     }
 
     private void createTrap() {
@@ -42,7 +53,7 @@ public class Game extends Screen {
 
     private void createMonster() {
         Monster monster = new Monster();
-        monster.startLocate(2, 2);
+        monster.startLocate(playerLocation[0], playerLocation[1]);
         monsterLocation[0] = monster.getLocationX();
         monsterLocation[1] = monster.getLocationY();
         gameMap[monsterLocation[0]][monsterLocation[1]] = "M ";
@@ -50,7 +61,9 @@ public class Game extends Screen {
 
     private void createPlayer() {
         Player player = new Player();
-        player.startLocate(2, 2);
+        playerLocation[0] = 2;
+        playerLocation[1] = 2;
+        player.startLocate(playerLocation[0], playerLocation[1]);
         gameMap[player.getLocationX()][player.getLocationY()] = "P ";
     }
 
