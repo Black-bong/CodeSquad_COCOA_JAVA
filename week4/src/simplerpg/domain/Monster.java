@@ -14,7 +14,6 @@ public class Monster implements Location {
         this.locationX = (int) (Math.random() * 5);
         this.locationY = (int) (Math.random() * 5);
         if (locationX == x && locationY == y) {
-            System.out.println("다시");
             startLocate(x, y);
         }
     }
