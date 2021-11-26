@@ -18,10 +18,12 @@ public class StreamEx3 {
 
         fileStream.map(File::getName)
                 .filter(s -> s.indexOf('.') != -1)
+                .peek(s -> System.out.printf("filename = %s%n", s))
                 .map(s -> s.substring(s.indexOf('.') + 1))
+                .peek(s -> System.out.printf("extension = %s%n", s))
                 .map(String::toUpperCase)
                 .distinct()
-                .forEach(System.out::print);
+                .forEach(System.out::println);
 
         System.out.println();
     }
