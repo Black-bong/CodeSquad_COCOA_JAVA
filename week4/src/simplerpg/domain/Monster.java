@@ -1,6 +1,8 @@
 package simplerpg.domain;
 
 
+import java.util.Random;
+
 public class Monster implements Location {
     private int locationX;
     private int locationY;
@@ -11,10 +13,10 @@ public class Monster implements Location {
 
     @Override
     public void startLocate(int x, int y) {
-        this.locationX = (int) (Math.random() * 5);
-        this.locationY = (int) (Math.random() * 5);
+        Random random = new Random();
+        this.locationX = random.nextInt(5);
+        this.locationY = random.nextInt(5);
         if (locationX == x && locationY == y) {
-            System.out.println("다시");
             startLocate(x, y);
         }
     }

@@ -1,7 +1,7 @@
 package simplerpg.domain;
 
 public class Score {
-    private int gameScore;
+    private final int gameScore;
 
     public Score(int gameScore) {
         this.gameScore = gameScore;

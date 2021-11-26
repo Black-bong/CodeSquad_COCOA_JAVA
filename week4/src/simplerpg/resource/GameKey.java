@@ -9,7 +9,7 @@ public enum GameKey {
     private final String inputKey;
     private final int locationX;
     private final int locationY;
-    private static int[] keyIndex = new int[2];
+    private static final int[] keyIndex = new int[2];
 
     GameKey(String inputKey, int locationX, int locationY) {
         this.inputKey = inputKey;
