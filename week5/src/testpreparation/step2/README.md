@@ -73,4 +73,4 @@ Bye~
 ### Input클래스
 ### FlatCube클래스
 ### Cube클래스
-### Commends
+### Commends클래스
