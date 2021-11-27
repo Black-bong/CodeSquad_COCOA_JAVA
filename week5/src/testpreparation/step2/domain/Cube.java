@@ -20,10 +20,12 @@ public class Cube {
         for (int i = 0; i < values.length; i++) {
             cube[i][lowIndex] = values[i];
         }
+        printCube();
     }
 
     public void replaceColCube(int index, String[] values) {
         cube[index] = values;
+        printCube();
     }
 
     public void printCube() {

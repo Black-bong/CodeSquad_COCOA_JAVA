@@ -26,7 +26,6 @@ public class FlatCube {
                 break;
             }
             splitCommend(inputCommend, commendList);
-            cube.printCube();
         }
     }
 
@@ -72,7 +71,6 @@ public class FlatCube {
         String[] replaceBottom = new String[cube.getCubeSize()];
         int cubeSize = cube.getCubeSize();
         int cubeLowIndex = 2;
-        int cubeCloIndex = 0;
         for (int i = 0; i < cubeSize; i++) {
             int columnIndex = (i + 1) % cubeSize;
             String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
@@ -86,7 +84,6 @@ public class FlatCube {
         String[] replaceBottom = new String[cube.getCubeSize()];
         int cubeSize = cube.getCubeSize();
         int cubeLowIndex = 2;
-        int cubeCloIndex = 0;
         for (int i = 0; i < cubeSize; i++) {
             int columnIndex = (i + 2) % cubeSize;
             String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
@@ -94,11 +91,9 @@ public class FlatCube {
         }
         cube.replaceColCube(cubeLowIndex, replaceBottom);
     }
-    // 0 0 -> 2 0
-    // 1 0 -> 0 0
-    // 2 0 -> 1 0
+
     private void movingToDownLeftLine(Cube cube) {
-        System.out.println("L  가장 왼쪽 줄을 아래로 한 칸 밀기");
+        System.out.println("L");
         String[] replaceBottom = new String[cube.getCubeSize()];
         int cubeSize = cube.getCubeSize();
         int cubeCloIndex = 0;
@@ -111,23 +106,67 @@ public class FlatCube {
     }
 
     private void movingToUpLeftLine(Cube cube) {
-        System.out.println("왼쪽줄 업");
+        System.out.println("L'");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeCloIndex = 0;
+        for (int i = 0; i < cubeSize; i++) {
+            int rowIndex = (i + 1) % cubeSize;
+            String firstColLineValue = cube.getCube()[rowIndex][cubeCloIndex];
+            replaceBottom[i] = firstColLineValue;
+        }
+        cube.replaceRowCube(cubeCloIndex, replaceBottom);
     }
 
     private void movingToUpRightLine(Cube cube) {
-        System.out.println("오른쪽줄 업");
+        System.out.println("R");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeCloIndex = 2;
+        for (int i = 0; i < cubeSize; i++) {
+            int rowIndex = (i + 1) % cubeSize;
+            String firstColLineValue = cube.getCube()[rowIndex][cubeCloIndex];
+            replaceBottom[i] = firstColLineValue;
+        }
+        cube.replaceRowCube(cubeCloIndex, replaceBottom);
     }
 
     private void movingToDownRightLine(Cube cube) {
-        System.out.println("오른쪽줄 다운");
+        System.out.println("R'");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeCloIndex = 2;
+        for (int i = 0; i < cubeSize; i++) {
+            int rowIndex = (i + 2) % cubeSize;
+            String firstColLineValue = cube.getCube()[rowIndex][cubeCloIndex];
+            replaceBottom[i] = firstColLineValue;
+        }
+        cube.replaceRowCube(cubeCloIndex, replaceBottom);
     }
 
     private void movingToRightTopLine(Cube cube) {
-
-        System.out.println("맨위줄을 오른쪽으로 이동");
+        System.out.println("U'");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeLowIndex = 0;
+        for (int i = 0; i < cubeSize; i++) {
+            int columnIndex = (i + 2) % cubeSize;
+            String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
+            replaceBottom[i] = bottomLineValue;
+        }
+        cube.replaceColCube(cubeLowIndex, replaceBottom);
     }
 
     private void movingToLeftTopLine(Cube cube) {
-        System.out.println("맨위줄을 왼쪽으로 이동");
+        System.out.println("U");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeLowIndex = 0;
+        for (int i = 0; i < cubeSize; i++) {
+            int columnIndex = (i + 1) % cubeSize;
+            String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
+            replaceBottom[i] = bottomLineValue;
+        }
+        cube.replaceColCube(cubeLowIndex, replaceBottom);
     }
 }
