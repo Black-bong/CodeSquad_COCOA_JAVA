@@ -61,3 +61,10 @@ Bye~
 - 객체와 배열을 적절히 활용할 것
 </div>
 </details>
+
+## 목차
+1. [Main클래스](#FlatCubeMain클래스)
+2. [Input클래스](#Input클래스)
+3. [FlatCube클래스](#FlatCube클래스)
+4. [Cube클래스](#Cube클래스)
+5. [Commends클래스](#Commends클래스)
