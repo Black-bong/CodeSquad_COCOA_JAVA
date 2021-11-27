@@ -71,10 +71,10 @@ atc
 |------|----|
 |[start](#start메소드)|Input클래스를 생성하고, 입력받은 값 메소드로 넘겨주는 역할|
 |[splitLetter](#splitLetter메소드)|사용자로부터 입력받은 문자 조건에 맞게 나눠주는 기능|
-|[movingToLetter](#movingToLetter메소드)|이동방향과 이동값을 구분하여 메소드를 |
-|[movingToLeft](#movingToLeft메소드)||
-|[movingToRight](#movingToRight메소드)||
-|[printLetter](#printLetter메소드)||
+|[movingToLetter](#movingToLetter메소드)|이동방향과 이동값을 구분하여 메소드를 호출해주는 기능|
+|[movingToLeft](#movingToLeft메소드)|문자를 왼쪽으로 이동시키는 기능|
+|[movingToRight](#movingToRight메소드)|문자를 오른쪽으로 이동시키는 기능|
+|[printLetter](#printLetter메소드)|이동된 문자를 출력해주는 기능|
 
 ### start메소드
   ```java
@@ -137,6 +137,8 @@ atc
       printLetter(queue);
   }
   ```
+  - 왼쪽으로 이동과 거의 유사한 코드
+  - 입력받은 문자를 이동시킬떄의 index를 계산하는 로직만 다르다.
 ### printLetter메소드
   ```java
   private void printLetter(char[] queue) {
@@ -145,3 +147,4 @@ atc
       }
   }
   ```
+  - 이동된 문자가 저장된 배열에서 꺼내 보여준다.
