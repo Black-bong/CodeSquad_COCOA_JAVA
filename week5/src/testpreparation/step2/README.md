@@ -230,3 +230,41 @@ Bye~
   ```
   - 큐브의 현재 모습을 출력해준다.
 ### Commends클래스
+|메소드명|기능|
+|------|----|
+|[isSameCommend](#isSameCommend메소드)|입력된 값이 명령어와 일치하는지 구별해주는 메소드|
+|[transferCommendID](#transferCommendID메소드)|입력된 값이 명령어와 일치하면 ID값을 반환 불일치하면 예외를 발생 시키는 기능|
+enum 타입의 Commends클래스 내부 모습
+  ```java
+  public enum Commends {
+    MOVING_TO_RIGHT_TOP_LINE("U'", 0),
+    MOVING_TO_LEFT_TOP_LINE("U", 1),
+    MOVING_TO_DOWN_RIGHT_LINE("R'", 2),
+    MOVING_TO_UP_RIGHT_LINE("R", 3),
+    MOVING_TO_UP_LEFT_LINE("L'",4 ),
+    MOVING_TO_DOWN_LEFT_LINE("L",5 ),
+    MOVING_TO_RIGHT_BOTTOM_LINE("B", 6),
+    MOVING_TO_LEFT_BOTTOM_LINE("B'", 7),
+    QUBE_EXIT("Q", 8);
+  ```
+  - 명령어 외의 값을 입력했을때 예외처리와 입력된 명령어에 따른 명령 수행을 좀 더 명확하게 확인하고자 enum으로 만들었다.
+### isSameCommend메소드
+  ```java
+  public boolean isSameCommend(String commend) {
+      return this.commend.equals(commend);
+  }
+  ```
+  - boolean타입을 사용하여 명령어와 입력된 값이 일치하면 true, 불일치하면 flase를 반환해준다.
+### transferCommendID메소드
+  ```java
+  public static int transferCommendID(String commend) {
+      for(var c : Commends.values()) {
+          if(c.isSameCommend(commend)) {
+              return c.commendID;
+          }
+      }
+      throw new IllegalArgumentException();
+  }
+  ```
+  - isSameCommend에서 반환된 값을 활용하여, 명령어 ID를 반환
+  - 입력된 값과 명령어가 다를경우 예외 발생
