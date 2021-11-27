@@ -69,9 +69,9 @@ atc
 ## MovieLetter클래스
 |메소드명|기능|
 |------|----|
-|[start](#start메소드)||
-|[splitLetter](#splitLetter메소드)||
-|[movingToLetter](#movingToLetter메소드)||
+|[start](#start메소드)|Input클래스를 생성하고, 입력받은 값 메소드로 넘겨주는 역할|
+|[splitLetter](#splitLetter메소드)|사용자로부터 입력받은 문자 조건에 맞게 나눠주는 기능|
+|[movingToLetter](#movingToLetter메소드)|이동방향과 이동값을 구분하여 메소드를 |
 |[movingToLeft](#movingToLeft메소드)||
 |[movingToRight](#movingToRight메소드)||
 |[printLetter](#printLetter메소드)||
@@ -85,6 +85,7 @@ atc
       splitLetter(inputLetter);
   }
   ```
+  - Input클래스를 생성자를 통해 생성하고, 값을 반환받아 splitLetter메소드로 값을 넘겨준다.
 ### splitLetter메소드
   ```java
   private void splitLetter(String inputText) {
@@ -95,6 +96,7 @@ atc
       movingToLetter(letter, moveCount, moveDirection);
   }
   ```
+  - 사용자로부터 입력받은 값을 파라미터로 받아서 문자, 이동거리, 이동방향으로 나눠서 movingToLetter메소드로 넘겨준다.
 ### movingToLetter메소드
   ```java
   private void movingToLetter(String letter, int moveCount, String moveDirection) {
@@ -114,6 +116,7 @@ atc
       }
   }
   ```
+  - if문의 활용하여 이동방향과 이동값을 구분하여, 메소드를 호출해준다.
 ### movingToLeft메소드
   ```java
   private void movingToLeft(String letter, int moveCount, char[] queue) {
@@ -123,6 +126,7 @@ atc
       printLetter(queue);
   }
   ```
+  - 사용자로부터 
 ### movingToRight메소드
   ```java
   private void movingToRight(String letter, int moveCount, char[] queue) {
@@ -131,7 +135,6 @@ atc
       }
       printLetter(queue);
   }
-
   ```
 ### printLetter메소드
   ```java
