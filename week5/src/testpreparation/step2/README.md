@@ -96,8 +96,8 @@ Bye~
 |메소드명|기능|
 |------|----|
 |[start](#start메소드)|필요한 객체 생성 및 반복적으로 사용자로부터 값을 입력받는 기능|
-|[createCube](#createCube메소드)|!!|
-|[createCommend](#createCommend메소드)|!!|
+|[createCube](#createCube메소드)|큐브생성 기능|
+|[createCommend](#createCommend메소드)|사용자로부터 입력받은 명령어에 따라 기능을 수행하도록 명령어 리스트를 생성하는 기능|
 |[splitCommend](#splitCommend메소드)|!!|
 |[movingToLeftBottomLine](#movingToLeftBottomLine메소드)|!!|
 |[movingToRightBottomLine](#movingToRightBottomLine메소드)|!!|
@@ -126,5 +126,33 @@ Bye~
       }
   }
   ```
+  - 프로그램 실행에 필요한 객체를 생성한다.
+  - 반복적인 작업 수행을 위해 사용자로부터 특정값이 입력 되기전까지 값을 입력받는다.
+### createCube메소드
+  ```java
+  private Cube createCube() {
+      return new Cube(new String[][]{
+              {"R ", "R ", "W "},
+              {"G ", "C ", "W "},
+              {"G ", "B ", "B "}
+      });
+  }
+  ```
+  - 프로그램에 사용될 큐브를 생성한다.
+### createCommend매소드
+  ```java
+  private void createCommend(Cube cube, Map<Integer, Runnable> commendList) {
+      commendList.put(0, () -> movingToRightTopLine(cube));
+      commendList.put(1, () -> movingToLeftTopLine(cube));
+      commendList.put(2, () -> movingToDownRightLine(cube));
+      commendList.put(3, () -> movingToUpRightLine(cube));
+      commendList.put(4, () -> movingToUpLeftLine(cube));
+      commendList.put(5, () -> movingToDownLeftLine(cube));
+      commendList.put(6, () -> movingToRightBottomLine(cube));
+      commendList.put(7, () -> movingToLeftBottomLine(cube));
+  }
+  ```
+  - switch 또는 if ~ else 문의 사용을 피하기위해 입력 받은 명령어에 따라 해당 기능을 하는 메소드를 실행하도록 함수형 인터페이스와 Map을 활용하였다.
+### splitCommend
 ### Cube클래스
 ### Commends클래스
