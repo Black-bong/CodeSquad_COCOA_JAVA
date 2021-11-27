@@ -35,19 +35,30 @@ atc
 
 ## 목차
 1. [Main클래스](#MovieLettersMain클래스)
-2. [Input클래스]
+2. [Input클래스](#Input클래스)
 3. [MovieLetter]
 
 ## MovieLettersMain클래스
-|메소드명|기능|설명|
-|------|----|---|
-|[main](#main메서드-코드)|프로그램의 실행|실행과 구현을 나누기 위해 클래스를 분리|
+|메소드명|기능|
+|------|----|
+|[main](#main())|프로그램의 실행|
 
-### main메서드 코드
+### main()
   ```java
   public static void main(String[] args) throws IOException {
       MovieLetter movieLetter = new MovieLetter();
       movieLetter.start();
   }
   ```
-### 
+## Input클래스
+|메소드명|기능|
+|------|----|
+|[inputString](#inputString())|consol창으로 사용자의 입력을 받는다.|
+
+### inputString()
+  ```java
+  public String inputString() throws IOException {
+      BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+      return buf.readLine().toLowerCase();
+  }
+  ```
