@@ -26,6 +26,7 @@ public class FlatCube {
                 break;
             }
             splitCommend(inputCommend, commendList);
+            cube.printCube();
         }
     }
 
@@ -47,7 +48,7 @@ public class FlatCube {
         commendList.put(6, () -> movingToRightBottomLine(cube));
         commendList.put(7, () -> movingToLeftBottomLine(cube));
     }
-    //  B',B',B',B',B,B,B,B,U,U,U',U',U'
+
     private void splitCommend(String commend, Map<Integer, Runnable> commendList) {
         List<String> values = new ArrayList<>();
         int j = 0;
@@ -62,7 +63,6 @@ public class FlatCube {
             j++;
         }
         for(var i : values) {
-//            System.out.println(i);
             commendList.get(Commends.transferCommendID(i)).run();
         }
     }
@@ -77,13 +77,20 @@ public class FlatCube {
             String bottomLineValue = cube.getCube()[cubeLastLowIndex][columnIndex];
             replaceBottom[i] = bottomLineValue;
         }
-        cube.printCube();
         cube.replaceCube(cubeLastLowIndex, replaceBottom);
     }
-
+    // G B B ,  0 3 / 1 0 / 2 1
     private void movingToRightBottomLine(Cube cube) {
-        System.out.println("B");
-        cube.printCube();
+        System.out.println("B 가장 아랫줄을 오른쪽으로 한 칸 밀기");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeLastLowIndex = 2;
+        for (int i = 0; i < cubeSize; i++) {
+            int columnIndex = (i + 2) % cubeSize;
+            String bottomLineValue = cube.getCube()[cubeLastLowIndex][columnIndex];
+            replaceBottom[i] = bottomLineValue;
+        }
+        cube.replaceCube(cubeLastLowIndex, replaceBottom);
     }
 
     private void movingToDownLeftLine(Cube cube) {
