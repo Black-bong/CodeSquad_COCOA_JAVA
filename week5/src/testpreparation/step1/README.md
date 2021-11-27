@@ -67,3 +67,23 @@ atc
   - BufferedReader를 사용해서 사용자로 부터 입력을 받고, 입력값을 toLowerCase()로 소문자로 변경해준 뒤 값을 리턴해준다.
 
 ## MovieLetter클래스
+|메소드명|기능|
+|------|----|
+|[start](#start메소드)||
+|[splitLetter](#splitLetter메소드)||
+|[movingToLetter](#movingToLetter메소드)||
+|[movingToLeft](#movingToLeft메소드)||
+|[movingToRight](#movingToRight메소드)||
+|[printLetter](#printLetter메소드)||
+
+### start메소드
+
+### splitLetter메소드
+
+### movingToLetter메소드
+
+### movingToLeft메소드
+
+### movingToRight메소드
+
+### printLetter메소드
