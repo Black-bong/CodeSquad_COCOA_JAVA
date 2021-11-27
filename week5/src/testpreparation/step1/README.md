@@ -1,6 +1,7 @@
-# 단어 밀어내기 구현
-> 작년 마스터즈 테스트 문제 풀어보기
+# 마스터즈코스 테스트 준비
+> 작년 마스터즈코스 테스트 문제를 풀어보자.
 
+## 단어 밀어내기 구현
 <details>
 <summary>문제</summary>
 <div markdown="1">
@@ -31,3 +32,17 @@ atc
 - 자기만의 기준으로 최대한 간결하게 코드를 작성한다.
 </div>
 </details>
+
+### 목차
+1. [Main클래스](#MovieLettersMain클래스)
+
+### MovieLettersMain클래스
+- 실행과 구현을 나누기 위해 Main클래스에는 실행을위한 main 메서드만 존재
+```java
+public static void main(String[] args) throws IOException {
+    MovieLetter movieLetter = new MovieLetter();
+    movieLetter.start();
+}
+```
+
+### 
