@@ -2,13 +2,13 @@ package testpreparation.step1;
 
 import java.io.IOException;
 
-public class MovieLetters {
-    public static void main(String[] args) throws IOException {
-        MovieLetters movieLetters = new MovieLetters();
+public class MovieLetter {
+
+    public void start() throws IOException {
         Input input = new Input();
         System.out.print("> ");
         String inputLetter = input.inputString();
-        movieLetters.splitLetter(inputLetter);
+        splitLetter(inputLetter);
     }
 
     private void splitLetter(String inputText) {
