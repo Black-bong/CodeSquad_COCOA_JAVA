@@ -18,7 +18,7 @@ public class FlatCube {
         Cube cube = createCube();
         cube.printCube();
         createCommend(cube, commendList);
-        while(true)  {
+        while (true) {
             System.out.print("CUBE> ");
             String inputCommend = input.inputString();
             if (inputCommend.equals("Q")) {
@@ -61,7 +61,7 @@ public class FlatCube {
             values.add(Character.toString(commend.charAt(i)));
             j++;
         }
-        for(var i : values) {
+        for (var i : values) {
             commendList.get(Commends.transferCommendID(i)).run();
         }
     }
