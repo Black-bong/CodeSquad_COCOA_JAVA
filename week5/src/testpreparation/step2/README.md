@@ -70,7 +70,42 @@ Bye~
 5. [Commends클래스](#Commends클래스)
 
 ### FlatCubeMain클래스
+|메소드명|기능|
+|------|----|
+|[main](#main메소드)|프로그램의 실행|
+### main메소드
+  ```java
+  public static void main(String[] args) throws IOException {
+      FlatCube flatCube = new FlatCube();
+      flatCube.start();
+  }
+  ```
+  - 프로그램의 실행과 구현을 나누기 위해 클래스를 분리하고, main메소드만 남겨 실행 기능만 담당
 ### Input클래스
+|메소드명|기능|
+|------|----|
+|[inputString](#inputString메소드)|사용자로부터 값을 입력받고, 반환해주는 기능|
+  ```java
+  public String inputString() throws IOException {
+      BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
+      return buf.readLine().toUpperCase();
+  }
+  ```
+  - BufferedReader를 사용해서 사용자로 부터 입력을 받고, 입력값을 toUpperCase()로 대문자로 변경해준 뒤 값을 리턴해준다.
 ### FlatCube클래스
+|메소드명|기능|
+|------|----|
+|[start](#start메소드)|!!|
+|[createCube](#createCube메소드)|!!|
+|[createCommend](#createCommend메소드)|!!|
+|[splitCommend](#splitCommend메소드)|!!|
+|[movingToLeftBottomLine](#movingToLeftBottomLine메소드)|!!|
+|[movingToRightBottomLine](#movingToRightBottomLine메소드)|!!|
+|[movingToDownLeftLine](#movingToDownLeftLine메소드)|!!|
+|[movingToUpLeftLine](#movingToUpLeftLine메소드)|!!|
+|[movingToUpRightLine](#movingToUpRightLine메소드)|!!|
+|[movingToDownRightLine](#movingToDownRightLine메소드)|!!|
+|[movingToRightTopLine](#movingToRightTopLine메소드)|!!|
+|[movingToLeftTopLine](#movingToLeftTopLine메소드)|!!|
 ### Cube클래스
 ### Commends클래스
