@@ -126,7 +126,8 @@ atc
       printLetter(queue);
   }
   ```
-  - 사용자로부터 
+  - 입력받은 문자를 0번째 index부터 기존 자리에 있는 문자의 index를 계산해서 저장
+  - 나머지 연산자를 사용해서 입력받은 문자의 길이 범위 안에서 배열에 저장되도록 로직을 작성
 ### movingToRight메소드
   ```java
   private void movingToRight(String letter, int moveCount, char[] queue) {
