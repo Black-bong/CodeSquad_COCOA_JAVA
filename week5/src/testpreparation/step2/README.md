@@ -99,14 +99,14 @@ Bye~
 |[createCube](#createCube메소드)|큐브생성 기능|
 |[createCommend](#createCommend메소드)|사용자로부터 입력받은 명령어에 따라 기능을 수행하도록 명령어 리스트를 생성하는 기능|
 |[splitCommend](#splitCommend메소드)|입력받은 명령어를 나눠주는 기능|
-|[movingToLeftBottomLine](#movingToLeftBottomLine메소드)|!!|
-|[movingToRightBottomLine](#movingToRightBottomLine메소드)|!!|
-|[movingToDownLeftLine](#movingToDownLeftLine메소드)|!!|
-|[movingToUpLeftLine](#movingToUpLeftLine메소드)|!!|
-|[movingToUpRightLine](#movingToUpRightLine메소드)|!!|
-|[movingToDownRightLine](#movingToDownRightLine메소드)|!!|
-|[movingToRightTopLine](#movingToRightTopLine메소드)|!!|
-|[movingToLeftTopLine](#movingToLeftTopLine메소드)|!!|
+|[movingToLeftBottomLine](#movingToLeftBottomLine메소드)|큐브 가장 아랫줄을 왼쪽으로 한 칸 이동시키는 기능|
+|[movingToRightBottomLine](#movingToLeftBottomLine메소드)|큐브 가장 아랫줄을 오른쪽으로 한 칸 이동시키는 기능|
+|[movingToDownLeftLine](#movingToLeftBottomLine메소드)|큐브 가장 왼쪽 줄을 아래로 한 칸 이동시키는 기능|
+|[movingToUpLeftLine](#movingToLeftBottomLine메소드)|큐브 가장 왼쪽 줄을 위로 한 칸 이동시키는 기능|
+|[movingToUpRightLine](#movingToLeftBottomLine메소드)|큐브 가장 오른쪽 줄을 위로 한 칸 이동시키는 기능|
+|[movingToDownRightLine](#movingToLeftBottomLine메소드)|큐브 가장 오른쪽 줄을 아래로 한 칸 이동시키는 기능|
+|[movingToRightTopLine](#movingToLeftBottomLine메소드)|큐브 가장 윗줄을 오른쪽으로 한 칸 이동시키는 기능|
+|[movingToLeftTopLine](#movingToLeftBottomLine메소드)|큐브 가능 윗줄을 왼쪽으로 한 칸 이동시키는 기능|
 ### start메소드
   ```java
   public void start() throws IOException {
@@ -153,7 +153,7 @@ Bye~
   }
   ```
   - switch 또는 if ~ else 문의 사용을 피하기위해 입력 받은 명령어에 따라 해당 기능을 하는 메소드를 실행하도록 함수형 인터페이스와 Map을 활용하였다.
-### splitCommend
+### splitCommend메소드
   ```java
   private void splitCommend(String commend, Map<Integer, Runnable> commendList) {
       List<String> values = new ArrayList<>();
@@ -173,5 +173,24 @@ Bye~
       }
   }
   ```
+  - 연속적으로 입력받은 명령어를 구분하고, 명령어 리스트로 값을 넘겨주고 반환된 명령어ID를 활용해 명령을 수행한다.
+### movingToLeftBottomLine메소드
+  ```java
+  private void movingToLeftBottomLine(Cube cube) {
+      System.out.println("B'");
+      String[] replaceBottom = new String[cube.getCubeSize()];
+      int cubeSize = cube.getCubeSize();
+      int cubeLowIndex = 2;
+      for (int i = 0; i < cubeSize; i++) {
+          int columnIndex = (i + 1) % cubeSize;
+          String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
+          replaceBottom[i] = bottomLineValue;
+      }
+      cube.replaceColCube(cubeLowIndex, replaceBottom);
+  }
+  ```
+  - 입력받은 명령어를 화면에 보여준다.
+  - 왼쪽으로 이동하는 큐브의 값의 변경되는 index를 계산한 후 저장하여, 큐브를 변경시킬 메소드의 인자값으로 넘겨준다.
+  - 다른 이동 명령어도 코드가 비슷, index 계산 로직만 조금씩 다르다.
 ### Cube클래스
 ### Commends클래스
