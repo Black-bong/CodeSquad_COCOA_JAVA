@@ -234,6 +234,7 @@ Bye~
 |------|----|
 |[isSameCommend](#isSameCommend메소드)|입력된 값이 명령어와 일치하는지 구별해주는 메소드|
 |[transferCommendID](#transferCommendID메소드)|입력된 값이 명령어와 일치하면 ID값을 반환 불일치하면 예외를 발생 시키는 기능|
+
 enum 타입의 Commends클래스 내부 모습
   ```java
   public enum Commends {
