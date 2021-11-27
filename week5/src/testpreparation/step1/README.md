@@ -36,7 +36,7 @@ atc
 ## 목차
 1. [Main클래스](#MovieLettersMain클래스)
 2. [Input클래스](#Input클래스)
-3. [MovieLetter]
+3. [MovieLetter](#MovieLetter클래스)
 
 ## MovieLettersMain클래스
 |메소드명|기능|
@@ -50,6 +50,8 @@ atc
       movieLetter.start();
   }
   ```
+  - 프로그램의 실행과 구현을 나누기 위해 클래스를 분리하고, main메소드만 남겨 실행 기능만 담당
+
 ## Input클래스
 |메소드명|기능|
 |------|----|
@@ -62,3 +64,6 @@ atc
       return buf.readLine().toLowerCase();
   }
   ```
+  - BufferedReader를 사용해서 사용자로 부터 입력을 받고, 입력값을 toLowerCase()로 소문자로 변경해준 뒤 값을 리턴해준다.
+
+## MovieLetter클래스
