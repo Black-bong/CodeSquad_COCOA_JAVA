@@ -41,9 +41,9 @@ atc
 ## MovieLettersMain클래스
 |메소드명|기능|
 |------|----|
-|[main](#main())|프로그램의 실행|
+|[main](#main메소드)|프로그램의 실행|
 
-### main()
+### main메소드
   ```java
   public static void main(String[] args) throws IOException {
       MovieLetter movieLetter = new MovieLetter();
@@ -55,9 +55,9 @@ atc
 ## Input클래스
 |메소드명|기능|
 |------|----|
-|[inputString](#inputString())|consol창으로 사용자의 입력을 받는다.|
+|[inputString](#inputString메소드)|consol창으로 사용자의 입력을 받는다.|
 
-### inputString()
+### inputString메소드
   ```java
   public String inputString() throws IOException {
       BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
