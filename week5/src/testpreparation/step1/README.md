@@ -36,7 +36,7 @@ atc
 ## 목차
 1. [Main클래스](#MovieLettersMain클래스)
 2. [Input클래스](#Input클래스)
-3. [MovieLetter](#MovieLetter클래스)
+3. [MovieLetter클래스](#MovieLetter클래스)
 
 ## MovieLettersMain클래스
 |메소드명|기능|
