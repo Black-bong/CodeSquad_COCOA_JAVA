@@ -95,7 +95,7 @@ Bye~
 ### FlatCube클래스
 |메소드명|기능|
 |------|----|
-|[start](#start메소드)|!!|
+|[start](#start메소드)|필요한 객체 생성 및 반복적으로 사용자로부터 값을 입력받는 기능|
 |[createCube](#createCube메소드)|!!|
 |[createCommend](#createCommend메소드)|!!|
 |[splitCommend](#splitCommend메소드)|!!|
@@ -107,5 +107,24 @@ Bye~
 |[movingToDownRightLine](#movingToDownRightLine메소드)|!!|
 |[movingToRightTopLine](#movingToRightTopLine메소드)|!!|
 |[movingToLeftTopLine](#movingToLeftTopLine메소드)|!!|
+### start메소드
+  ```java
+  public void start() throws IOException {
+      Input input = new Input();
+      Map<Integer, Runnable> commendList = new HashMap<>();
+      Cube cube = createCube();
+      cube.printCube();
+      createCommend(cube, commendList);
+      while (true) {
+          System.out.print("CUBE> ");
+          String inputCommend = input.inputString();
+          if (inputCommend.equals("Q")) {
+              System.out.println("Bye~");
+              break;
+          }
+          splitCommend(inputCommend, commendList);
+      }
+  }
+  ```
 ### Cube클래스
 ### Commends클래스
