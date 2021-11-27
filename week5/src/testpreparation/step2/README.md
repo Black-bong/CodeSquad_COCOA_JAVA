@@ -139,7 +139,7 @@ Bye~
   }
   ```
   - 프로그램에 사용될 큐브를 생성한다.
-### createCommend매소드
+### createCommend소드
   ```java
   private void createCommend(Cube cube, Map<Integer, Runnable> commendList) {
       commendList.put(0, () -> movingToRightTopLine(cube));
