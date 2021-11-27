@@ -16,7 +16,13 @@ public class Cube {
         return cube.length;
     }
 
-    public void replaceCube(int index, String[] values) {
+    public void replaceRowCube(int lowIndex, String[] values) {
+        for (int i = 0; i < values.length; i++) {
+            cube[i][lowIndex] = values[i];
+        }
+    }
+
+    public void replaceColCube(int index, String[] values) {
         cube[index] = values;
     }
 

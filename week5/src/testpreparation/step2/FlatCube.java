@@ -71,30 +71,43 @@ public class FlatCube {
         System.out.println("B'");
         String[] replaceBottom = new String[cube.getCubeSize()];
         int cubeSize = cube.getCubeSize();
-        int cubeLastLowIndex = 2;
+        int cubeLowIndex = 2;
+        int cubeCloIndex = 0;
         for (int i = 0; i < cubeSize; i++) {
             int columnIndex = (i + 1) % cubeSize;
-            String bottomLineValue = cube.getCube()[cubeLastLowIndex][columnIndex];
+            String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
             replaceBottom[i] = bottomLineValue;
         }
-        cube.replaceCube(cubeLastLowIndex, replaceBottom);
-    }
-    // G B B ,  0 3 / 1 0 / 2 1
-    private void movingToRightBottomLine(Cube cube) {
-        System.out.println("B 가장 아랫줄을 오른쪽으로 한 칸 밀기");
-        String[] replaceBottom = new String[cube.getCubeSize()];
-        int cubeSize = cube.getCubeSize();
-        int cubeLastLowIndex = 2;
-        for (int i = 0; i < cubeSize; i++) {
-            int columnIndex = (i + 2) % cubeSize;
-            String bottomLineValue = cube.getCube()[cubeLastLowIndex][columnIndex];
-            replaceBottom[i] = bottomLineValue;
-        }
-        cube.replaceCube(cubeLastLowIndex, replaceBottom);
+        cube.replaceColCube(cubeLowIndex, replaceBottom);
     }
 
+    private void movingToRightBottomLine(Cube cube) {
+        System.out.println("B");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeLowIndex = 2;
+        int cubeCloIndex = 0;
+        for (int i = 0; i < cubeSize; i++) {
+            int columnIndex = (i + 2) % cubeSize;
+            String bottomLineValue = cube.getCube()[cubeLowIndex][columnIndex];
+            replaceBottom[i] = bottomLineValue;
+        }
+        cube.replaceColCube(cubeLowIndex, replaceBottom);
+    }
+    // 0 0 -> 2 0
+    // 1 0 -> 0 0
+    // 2 0 -> 1 0
     private void movingToDownLeftLine(Cube cube) {
-        System.out.println("왼쪽줄 다운");
+        System.out.println("L  가장 왼쪽 줄을 아래로 한 칸 밀기");
+        String[] replaceBottom = new String[cube.getCubeSize()];
+        int cubeSize = cube.getCubeSize();
+        int cubeCloIndex = 0;
+        for (int i = 0; i < cubeSize; i++) {
+            int rowIndex = (i + 2) % cubeSize;
+            String firstColLineValue = cube.getCube()[rowIndex][cubeCloIndex];
+            replaceBottom[i] = firstColLineValue;
+        }
+        cube.replaceRowCube(cubeCloIndex, replaceBottom);
     }
 
     private void movingToUpLeftLine(Cube cube) {
