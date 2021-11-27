@@ -98,7 +98,7 @@ Bye~
 |[start](#start메소드)|필요한 객체 생성 및 반복적으로 사용자로부터 값을 입력받는 기능|
 |[createCube](#createCube메소드)|큐브생성 기능|
 |[createCommend](#createCommend메소드)|사용자로부터 입력받은 명령어에 따라 기능을 수행하도록 명령어 리스트를 생성하는 기능|
-|[splitCommend](#splitCommend메소드)|!!|
+|[splitCommend](#splitCommend메소드)|입력받은 명령어를 나눠주는 기능|
 |[movingToLeftBottomLine](#movingToLeftBottomLine메소드)|!!|
 |[movingToRightBottomLine](#movingToRightBottomLine메소드)|!!|
 |[movingToDownLeftLine](#movingToDownLeftLine메소드)|!!|
@@ -154,5 +154,24 @@ Bye~
   ```
   - switch 또는 if ~ else 문의 사용을 피하기위해 입력 받은 명령어에 따라 해당 기능을 하는 메소드를 실행하도록 함수형 인터페이스와 Map을 활용하였다.
 ### splitCommend
+  ```java
+  private void splitCommend(String commend, Map<Integer, Runnable> commendList) {
+      List<String> values = new ArrayList<>();
+      int j = 0;
+      for (int i = 0; i < commend.length(); i++) {
+          String commends = Character.toString(commend.charAt(i));
+          if (commends.equals("'")) {
+              String temp = commend.charAt(i - 1) + commends;
+              values.set(j - 1, temp);
+              continue;
+          }
+          values.add(Character.toString(commend.charAt(i)));
+          j++;
+      }
+      for (var i : values) {
+          commendList.get(Commends.transferCommendID(i)).run();
+      }
+  }
+  ```
 ### Cube클래스
 ### Commends클래스
