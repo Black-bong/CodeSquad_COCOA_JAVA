@@ -193,4 +193,40 @@ Bye~
   - 왼쪽으로 이동하는 큐브의 값의 변경되는 index를 계산한 후 저장하여, 큐브를 변경시킬 메소드의 인자값으로 넘겨준다.
   - 다른 이동 명령어도 코드가 비슷, index 계산 로직만 조금씩 다르다.
 ### Cube클래스
+|메소드명|기능|
+|------|----|
+|[replaceRowCube](#replaceRowCube메소드)|큐브의 행을 변경시키는 기능|
+|[replaceColCube](#replaceColCube메소드)|큐브의 열을 변경시키는 기능|
+|[printCube](#printCube메소드)|큐브의 현재 모습을 출력해주는 기능|
+### replaceRowCube메소드
+  ```java
+  public void replaceRowCube(int lowIndex, String[] values) {
+      for (int i = 0; i < values.length; i++) {
+          cube[i][lowIndex] = values[i];
+      }
+      printCube();
+  }
+  ```
+  - 변경되는 값을 매개변수로 받아서 큐브의 행에 값을 저장
+### replaceColCube메소드
+  ```java
+  public void replaceColCube(int index, String[] values) {
+      cube[index] = values;
+      printCube();
+  }
+  ```
+  - 변경되는 값을 매개변수로 받아서 큐브의열에 값을 저장
+### printCube메소드
+  ```java
+  public void printCube() {
+      for (String[] strings : cube) {
+          for (String string : strings) {
+              System.out.print(string);
+          }
+          System.out.println();
+      }
+      System.out.println();
+  }
+  ```
+  - 큐브의 현재 모습을 출력해준다.
 ### Commends클래스
