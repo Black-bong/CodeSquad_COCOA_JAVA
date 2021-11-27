@@ -77,13 +77,67 @@ atc
 |[printLetter](#printLetter메소드)||
 
 ### start메소드
-
+  ```java
+  public void start() throws IOException {
+      Input input = new Input();
+      System.out.print("> ");
+      String inputLetter = input.inputString();
+      splitLetter(inputLetter);
+  }
+  ```
 ### splitLetter메소드
-
+  ```java
+  private void splitLetter(String inputText) {
+      String[] letters = inputText.split(" +");
+      String letter = letters[0];
+      int moveCount = Integer.parseInt(letters[1]);
+      String moveDirection = letters[2];
+      movingToLetter(letter, moveCount, moveDirection);
+  }
+  ```
 ### movingToLetter메소드
+  ```java
+  private void movingToLetter(String letter, int moveCount, String moveDirection) {
+      char[] queue = new char[letter.length()];
+      if (moveDirection.equals("r") && moveCount > 0) {
+          movingToRight(letter, moveCount, queue);
+      }
+      if (moveDirection.equals("r") && moveCount < 0) {
+          movingToLeft(letter, moveCount * - 1, queue);
+      }
 
+      if (moveDirection.equals("l") && moveCount > 0) {
+          movingToLeft(letter, moveCount, queue);
+      }
+      if (moveDirection.equals("l") && moveCount < 0) {
+          movingToRight(letter, moveCount * - 1, queue);
+      }
+  }
+  ```
 ### movingToLeft메소드
-
+  ```java
+  private void movingToLeft(String letter, int moveCount, char[] queue) {
+      for (int i = 0; i < letter.length(); i++) {
+          queue[i] = letter.charAt(moveCount++ % queue.length);
+      }
+      printLetter(queue);
+  }
+  ```
 ### movingToRight메소드
+  ```java
+  private void movingToRight(String letter, int moveCount, char[] queue) {
+      for (int i = 0; i < letter.length(); i++) {
+          queue[i] = letter.charAt((moveCount * 4 + i) % queue.length);
+      }
+      printLetter(queue);
+  }
 
+  ```
 ### printLetter메소드
+  ```java
+  private void printLetter(char[] queue) {
+      for (var c : queue) {
+          System.out.print(c);
+      }
+  }
+  ```
