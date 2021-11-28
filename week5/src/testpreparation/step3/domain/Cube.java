@@ -27,29 +27,6 @@ public class Cube {
         this.id = id;
     }
 
-    public StringBuilder printCubeTB() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            sb.append("        ");
-            for (int j = 0; j < width; j++) {
-                sb.append(cube[i][j]).append(" ");
-            }
-            sb.append("\n");
-        }
-        return sb;
-    }
-
-    public StringBuilder printCubeCenter() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < width; j++) {
-                sb.append(cube[i][j]).append(" ");
-            }
-            sb.append("\n");
-        }
-        return sb;
-    }
-
     public String[][] getCube() {
         return cube;
     }
