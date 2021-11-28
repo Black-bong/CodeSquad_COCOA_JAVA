@@ -1,7 +1,8 @@
-package testpreparation.step3;
+package testpreparation.step3.Model;
 
 import testpreparation.step3.domain.Cube;
 import testpreparation.step3.repository.CubeRepository;
+
 
 public class RubiksCube {
 
@@ -9,7 +10,6 @@ public class RubiksCube {
 
     public void start() {
         createCube();
-        cubeRepository.printCube();
     }
 
     private void createCube() {
@@ -25,5 +25,9 @@ public class RubiksCube {
         cubeRepository.save(yellowColorSide);
         Cube redColorSide = new Cube("R", 3, 3);
         cubeRepository.save(redColorSide);
+    }
+
+    public void printCube() {
+        cubeRepository.printCube();
     }
 }
