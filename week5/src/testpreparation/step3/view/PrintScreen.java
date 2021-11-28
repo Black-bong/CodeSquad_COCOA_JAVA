@@ -14,7 +14,7 @@ public class PrintScreen {
         Commend commend = new Commend();
         Input input = new Input();
         System.out.print("CUBE> ");
-        commend.splitCommend(input.inputString());
+        commend.splitInputString(input.inputString());
     }
 
     public void cubeScreen() {
