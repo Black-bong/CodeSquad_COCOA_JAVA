@@ -106,6 +106,7 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.leftRotate(cubeKey, cubeLineIndex);
         printCube();
     }
+
     //TODO 구현
     public void movingToLeftFront() {
         System.out.println("F'");
@@ -113,6 +114,7 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.reverseRotate(cubeKey);
         printCube();
     }
+
     //TODO 구현
     public void movingToRightFront() {
         System.out.println("F");
@@ -120,6 +122,7 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.rotate(cubeKey);
         printCube();
     }
+
     //TODO 구현
     public void movingToLeftBack() {
         System.out.println("B");
@@ -127,6 +130,7 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.reverseRotate(cubeKey);
         printCube();
     }
+
     //TODO 구현
     public void movingToRightBack() {
         System.out.println("B'");

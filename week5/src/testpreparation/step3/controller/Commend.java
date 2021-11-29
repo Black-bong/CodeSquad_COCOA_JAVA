@@ -32,7 +32,7 @@ public class Commend extends RubiksCube {
     private void commendController(List<String> commends) {
         Map<Integer, Runnable> commendList = new HashMap<>();
         createCommend(commendList);
-        for(var i : commends) {
+        for (var i : commends) {
             commendList.get(Commends.transferCommendID(i)).run();
         }
     }

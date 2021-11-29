@@ -59,7 +59,7 @@ public class CubeRepository {
             value.add(cubeList.get((i % 4) + 1).getCube()[cubeLineIndex]);
         }
         for (int j = 0; j < value.size(); j++) {
-            cubeList.get(j+1).getCube()[cubeLineIndex] = value.get(j);
+            cubeList.get(j + 1).getCube()[cubeLineIndex] = value.get(j);
         }
         reverseRotate(cubeKey);
     }
@@ -71,7 +71,7 @@ public class CubeRepository {
             value.add(cubeList.get(i + 1 % 4).getCube()[cubeLineIndex]);
         }
         for (int j = 0; j < value.size(); j++) {
-            cubeList.get(j+1).getCube()[cubeLineIndex] = value.get(j);
+            cubeList.get(j + 1).getCube()[cubeLineIndex] = value.get(j);
         }
         rotate(cubeKey);
     }
@@ -146,7 +146,7 @@ public class CubeRepository {
 
     public void reverseRotate(int cubeKey) {
         String[][] tempArr = new String[3][3];
-        for (int i = 2,k = 0; i > -1; i--, k++) {
+        for (int i = 2, k = 0; i > -1; i--, k++) {
             for (int j = 0; j < tempArr[i].length; j++) {
                 tempArr[j][i] = cubeList.get(cubeKey).getCube()[k][j];
             }
