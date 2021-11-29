@@ -40,7 +40,7 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToLeftBottomLine() {
-
+        cubeRepository.replaceCubeLine();
         LOG.info("B'");
     }
 
