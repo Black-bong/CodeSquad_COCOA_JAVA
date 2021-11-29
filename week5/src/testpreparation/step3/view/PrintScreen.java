@@ -14,8 +14,8 @@ public class PrintScreen {
         rubiksCube.start();
         Commend commend = new Commend();
         Input input = new Input();
+        rubiksCube.printCube();
         while (true) {
-            rubiksCube.printCube();
             System.out.print("CUBE> ");
             commend.splitInputString(input.inputString());
         }

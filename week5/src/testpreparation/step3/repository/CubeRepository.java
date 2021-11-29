@@ -76,25 +76,25 @@ public class CubeRepository {
         rotate(cubeKey);
     }
 
-    public void upRotate(int colIndex) {
+    public void upRotate(int colIndex) { // 0 2 5 3
+        int[] cubeKeys = {0, 2, 5, 3};
         int valueIndex = 0;
         List<String> value = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            if (i == 1 || i == 3) { continue; }
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
-                value.add(cubeList.get(i).getCube()[j][colIndex]);
+                value.add(cubeList.get(cubeKeys[i]).getCube()[j][colIndex]);
             }
         }
-        for (int i = 0; i < 6; i++) {
-            if (i == 1 || i == 3) { continue; }
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 3; j++) {
-                cubeList.get(i).getCube()[j][colIndex] = value.get((valueIndex + 3) % value.size());
+                cubeList.get(cubeKeys[i]).getCube()[j][colIndex] = value.get((valueIndex + 3) % value.size());
                 valueIndex++;
             }
         }
     }
 
     public void rotate(int cubeKey) {
+        int[] cubeKeys = {0, 2, 3, 5};
         String[][] tempArr = new String[3][3];
         for (int i = 0; i < tempArr.length; i++) {
             for (int j = 0; j < tempArr[i].length; j++) {
@@ -109,7 +109,7 @@ public class CubeRepository {
     }
 
     public void reverseRotate(int cubeKey) {
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             rotate(cubeKey);
         }
     }

@@ -17,18 +17,18 @@ public class RubiksCube extends PrintScreen {
     }
 
     private void createCube() {
-        Cube blueColorSide = new Cube("B", 3, 3);
-        cubeRepository.save(blueColorSide);
-        Cube whiteColorSide = new Cube("W", 3, 3);
-        cubeRepository.save(whiteColorSide);
-        Cube orangeColorSide = new Cube("O", 3, 3);
-        cubeRepository.save(orangeColorSide);
-        Cube greenColorSide = new Cube("G", 3, 3);
-        cubeRepository.save(greenColorSide);
-        Cube yellowColorSide = new Cube("Y", 3, 3);
-        cubeRepository.save(yellowColorSide);
-        Cube redColorSide = new Cube("R", 3, 3);
-        cubeRepository.save(redColorSide);
+        Cube top = new Cube("W", 3, 3);
+        cubeRepository.save(top);
+        Cube left = new Cube("O", 3, 3);
+        cubeRepository.save(left);
+        Cube front = new Cube("G", 3, 3);
+        cubeRepository.save(front);
+        Cube right = new Cube("R", 3, 3);
+        cubeRepository.save(right);
+        Cube back = new Cube("B", 3, 3);
+        cubeRepository.save(back);
+        Cube bottom = new Cube("Y", 3, 3);
+        cubeRepository.save(bottom);
     }
 
     public void printCube() {
@@ -40,74 +40,86 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToLeftBottomLine() {
+        System.out.println("D'");
         int cubeKey = 5;
         int cubeLineIndex = 2;
         cubeRepository.leftRotate(cubeKey, cubeLineIndex);
-        LOG.info("D'");
+        printCube();
     }
 
     public void movingToRightBottomLine() {
+        System.out.println("D");
         int cubeKey = 5;
         int cubeLineIndex = 2;
         cubeRepository.rightRotate(cubeKey, cubeLineIndex);
-        LOG.info("D");
+        printCube();
     }
 
     public void movingToDownLeftLine() {
-        LOG.info("L");
+        System.out.println("L");
+        printCube();
     }
 
     public void movingToUpLeftLine() {
+        System.out.println("L'");
         int colIndex = 0;
         cubeRepository.upRotate(colIndex);
-        LOG.info("L'");
+        printCube();
     }
 
     public void movingToUpRightLine() {
+        System.out.println("R");
         int colIndex = 2;
         cubeRepository.upRotate(colIndex);
-        LOG.info("R");
+        printCube();
     }
 
     public void movingToDownRightLine() {
-        LOG.info("R'");
+        System.out.println("R'");
+        printCube();
     }
 
     public void movingToRightTopLine() {
+        System.out.println("U'");
         int cubeKey = 0;
         int cubeLineIndex = 0;
         cubeRepository.rightRotate(cubeKey, cubeLineIndex);
-        LOG.info("U'");
+        printCube();
     }
 
     public void movingToLeftTopLine() {
+        System.out.println("U");
         int cubeKey = 0;
         int cubeLineIndex = 0;
         cubeRepository.leftRotate(cubeKey, cubeLineIndex);
-        LOG.info("U");
+        printCube();
     }
 
     public void movingToLeftFront() {
+        System.out.println("F'");
         int cubeKey = 2;
         cubeRepository.reverseRotate(cubeKey);
-        LOG.info("F'");
+        printCube();
     }
 
     public void movingToRightFront() {
+        System.out.println("F");
         int cubeKey = 2;
         cubeRepository.rotate(cubeKey);
-        LOG.info("F");
+        printCube();
     }
 
     public void movingToLeftBack() {
+        System.out.println("B");
         int cubeKey = 4;
         cubeRepository.reverseRotate(cubeKey);
-        LOG.info("B");
+        printCube();
     }
 
     public void movingToRightBack() {
+        System.out.println("B'");
         int cubeKey = 4;
         cubeRepository.rotate(cubeKey);
-        LOG.info("B'");
+        printCube();
     }
 }
