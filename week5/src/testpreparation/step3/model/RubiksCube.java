@@ -4,13 +4,11 @@ import testpreparation.step3.domain.Cube;
 import testpreparation.step3.repository.CubeRepository;
 import testpreparation.step3.view.PrintScreen;
 
-import java.util.logging.Logger;
 
 
 public class RubiksCube extends PrintScreen {
 
     CubeRepository cubeRepository = CubeRepository.getInstance();
-    private static final Logger LOG = Logger.getGlobal();
 
     public void start() {
         createCube();
@@ -119,7 +117,7 @@ public class RubiksCube extends PrintScreen {
     public void movingToRightFront() {
         System.out.println("F");
         int cubeKey = 2;
-        cubeRepository.rotate(cubeKey);
+        cubeRepository.frontRotate(cubeKey);
         printCube();
     }
 
