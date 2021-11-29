@@ -71,4 +71,20 @@ public class RubiksCube extends PrintScreen {
     public void movingToLeftTopLine() {
         LOG.info("U");
     }
+
+    public void movingToLeftFront() {
+        LOG.info("F'");
+    }
+
+    public void movingToRightFront() {
+        LOG.info("F");
+    }
+
+    public void movingToLeftBack() {
+        LOG.info("B");
+    }
+
+    public void movingToRightBack() {
+        LOG.info("B'");
+    }
 }

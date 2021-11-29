@@ -59,14 +59,18 @@ public class Commend extends RubiksCube {
     }
 
     private void createCommend(Map<Integer, Runnable> commendList) {
-        commendList.put(0, () -> movingToRightTopLine());
-        commendList.put(1, () -> movingToLeftTopLine());
-        commendList.put(2, () -> movingToDownRightLine());
-        commendList.put(3, () -> movingToUpRightLine());
-        commendList.put(4, () -> movingToUpLeftLine());
-        commendList.put(5, () -> movingToDownLeftLine());
-        commendList.put(6, () -> movingToRightBottomLine());
-        commendList.put(7, () -> movingToLeftBottomLine());
-        commendList.put(8, () -> cubeExit());
+        commendList.put(0, () -> movingToRightTopLine()); // U'
+        commendList.put(1, () -> movingToLeftTopLine()); // U
+        commendList.put(2, () -> movingToDownRightLine()); // R'
+        commendList.put(3, () -> movingToUpRightLine()); // R
+        commendList.put(4, () -> movingToUpLeftLine()); // L'
+        commendList.put(5, () -> movingToDownLeftLine()); // L
+        commendList.put(6, () -> movingToRightBottomLine()); // D
+        commendList.put(7, () -> movingToLeftBottomLine()); // D'
+        commendList.put(8, () -> movingToRightFront()); // F
+        commendList.put(9, () -> movingToLeftFront()); // F'
+        commendList.put(10, () -> movingToRightBack()); // B'
+        commendList.put(11, () -> movingToLeftBack()); // B
+        commendList.put(12, () -> cubeExit()); // Q
     }
 }
