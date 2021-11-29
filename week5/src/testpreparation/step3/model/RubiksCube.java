@@ -1,4 +1,4 @@
-package testpreparation.step3.Model;
+package testpreparation.step3.model;
 
 import testpreparation.step3.domain.Cube;
 import testpreparation.step3.repository.CubeRepository;
@@ -42,11 +42,14 @@ public class RubiksCube extends PrintScreen {
     public void movingToLeftBottomLine() {
         int cubeKey = 5;
         int cubeLineIndex = 2;
-        cubeRepository.replaceCubeLine(cubeKey, cubeLineIndex);
+        cubeRepository.leftRotate(cubeKey, cubeLineIndex);
         LOG.info("D'");
     }
 
     public void movingToRightBottomLine() {
+        int cubeKey = 5;
+        int cubeLineIndex = 2;
+        cubeRepository.rightRotate(cubeKey, cubeLineIndex);
         LOG.info("D");
     }
 
@@ -55,10 +58,14 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToUpLeftLine() {
+        int colIndex = 0;
+        cubeRepository.upRotate(colIndex);
         LOG.info("L'");
     }
 
     public void movingToUpRightLine() {
+        int colIndex = 2;
+        cubeRepository.upRotate(colIndex);
         LOG.info("R");
     }
 
@@ -67,28 +74,40 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToRightTopLine() {
+        int cubeKey = 0;
+        int cubeLineIndex = 0;
+        cubeRepository.rightRotate(cubeKey, cubeLineIndex);
         LOG.info("U'");
     }
 
     public void movingToLeftTopLine() {
+        int cubeKey = 0;
+        int cubeLineIndex = 0;
+        cubeRepository.leftRotate(cubeKey, cubeLineIndex);
         LOG.info("U");
     }
 
     public void movingToLeftFront() {
-        int cubeKey = 1;
+        int cubeKey = 2;
         cubeRepository.reverseRotate(cubeKey);
         LOG.info("F'");
     }
 
     public void movingToRightFront() {
+        int cubeKey = 2;
+        cubeRepository.rotate(cubeKey);
         LOG.info("F");
     }
 
     public void movingToLeftBack() {
+        int cubeKey = 4;
+        cubeRepository.reverseRotate(cubeKey);
         LOG.info("B");
     }
 
     public void movingToRightBack() {
+        int cubeKey = 4;
+        cubeRepository.rotate(cubeKey);
         LOG.info("B'");
     }
 }

@@ -1,6 +1,6 @@
 package testpreparation.step3.controller;
 
-import testpreparation.step3.Model.RubiksCube;
+import testpreparation.step3.model.RubiksCube;
 import testpreparation.step3.resource.Commends;
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package testpreparation.step3.view;
 
 
-import testpreparation.step3.Model.RubiksCube;
+import testpreparation.step3.model.RubiksCube;
 import testpreparation.step3.controller.Commend;
 import testpreparation.step3.resource.Input;
 
