@@ -2,10 +2,7 @@ package testpreparation.step3.repository;
 
 import testpreparation.step3.domain.Cube;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CubeRepository {
     private static final CubeRepository instance = new CubeRepository();
@@ -56,14 +53,34 @@ public class CubeRepository {
         sb.append("\n");
     }
 
-    public void replaceCubeLine() {
+    public void replaceCubeLine(int cubeKey, int cubeLineIndex) {
         List<String[]> value = new ArrayList<>();
-        int cubeKey = 1;
-        for (int i = cubeKey; i < 5; i++) {
-            value.add(cubeList.get((i % 4) + 1).getCube()[2]);
+        for (int i = 1; i < 5; i++) {
+            value.add(cubeList.get((i % 4) + 1).getCube()[cubeLineIndex]);
         }
         for (int j = 0; j < value.size(); j++) {
-            cubeList.get(j+1).getCube()[2] = value.get(j);
+            cubeList.get(j+1).getCube()[cubeLineIndex] = value.get(j);
+        }
+        reverseRotate(cubeKey);
+    }
+
+    public void rotate(int cubeKey) {
+        String[][] cubeSide = new String[3][3];
+        for (int i = 0; i < cubeSide.length; i++) {
+            for (int j = 0; j < cubeSide[i].length; j++) {
+                cubeSide[j][2 - i] = cubeList.get(cubeKey).getCube()[i][j];
+            }
+        }
+        for (int i = 0; i < cubeSide.length; i++) {
+            for (int j = 0; j < cubeSide[i].length; j++) {
+                cubeList.get(cubeKey).getCube()[i][j] = cubeSide[i][j];
+            }
+        }
+    }
+
+    public void reverseRotate(int cubeKey) {
+        for (int i = 0; i < 2; i++) {
+            rotate(cubeKey);
         }
     }
 }

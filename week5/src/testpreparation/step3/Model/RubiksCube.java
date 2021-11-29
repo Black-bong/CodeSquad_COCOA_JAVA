@@ -40,12 +40,14 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToLeftBottomLine() {
-        cubeRepository.replaceCubeLine();
-        LOG.info("B'");
+        int cubeKey = 5;
+        int cubeLineIndex = 2;
+        cubeRepository.replaceCubeLine(cubeKey, cubeLineIndex);
+        LOG.info("D'");
     }
 
     public void movingToRightBottomLine() {
-        LOG.info("B");
+        LOG.info("D");
     }
 
     public void movingToDownLeftLine() {
@@ -73,6 +75,8 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void movingToLeftFront() {
+        int cubeKey = 1;
+        cubeRepository.reverseRotate(cubeKey);
         LOG.info("F'");
     }
 
