@@ -10,16 +10,19 @@ import java.io.IOException;
 public class PrintScreen {
 
     public void inputScreen() throws IOException {
-        cubeScreen();
-        Commend commend = new Commend();
-        Input input = new Input();
-        System.out.print("CUBE> ");
-        commend.splitInputString(input.inputString());
-    }
-
-    public void cubeScreen() {
         RubiksCube rubiksCube = new RubiksCube();
         rubiksCube.start();
-        rubiksCube.printCube();
+        Commend commend = new Commend();
+        Input input = new Input();
+        while (true) {
+            rubiksCube.printCube();
+            System.out.print("CUBE> ");
+            commend.splitInputString(input.inputString());
+        }
+    }
+
+    public void endScreen() {
+        System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
+        System.exit(0);
     }
 }

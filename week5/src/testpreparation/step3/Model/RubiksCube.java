@@ -2,11 +2,15 @@ package testpreparation.step3.Model;
 
 import testpreparation.step3.domain.Cube;
 import testpreparation.step3.repository.CubeRepository;
+import testpreparation.step3.view.PrintScreen;
+
+import java.util.logging.Logger;
 
 
-public class RubiksCube {
+public class RubiksCube extends PrintScreen {
 
     CubeRepository cubeRepository = CubeRepository.getInstance();
+    private static final Logger LOG = Logger.getGlobal();
 
     public void start() {
         createCube();
@@ -29,5 +33,42 @@ public class RubiksCube {
 
     public void printCube() {
         cubeRepository.printCube();
+    }
+
+    public void cubeExit() {
+        endScreen();
+    }
+
+    public void movingToLeftBottomLine() {
+
+        LOG.info("B'");
+    }
+
+    public void movingToRightBottomLine() {
+        LOG.info("B");
+    }
+
+    public void movingToDownLeftLine() {
+        LOG.info("L");
+    }
+
+    public void movingToUpLeftLine() {
+        LOG.info("L'");
+    }
+
+    public void movingToUpRightLine() {
+        LOG.info("R");
+    }
+
+    public void movingToDownRightLine() {
+        LOG.info("R'");
+    }
+
+    public void movingToRightTopLine() {
+        LOG.info("U'");
+    }
+
+    public void movingToLeftTopLine() {
+        LOG.info("U");
     }
 }
