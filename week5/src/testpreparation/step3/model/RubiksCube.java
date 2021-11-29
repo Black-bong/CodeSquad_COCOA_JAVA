@@ -57,25 +57,37 @@ public class RubiksCube extends PrintScreen {
 
     public void movingToDownLeftLine() {
         System.out.println("L");
+        int colIndex = 0;
+        int cubeKey = 1;
+        int backColIndex = 2;
+        cubeRepository.downRotate(cubeKey, colIndex, backColIndex);
         printCube();
     }
 
     public void movingToUpLeftLine() {
         System.out.println("L'");
         int colIndex = 0;
-        cubeRepository.upRotate(colIndex);
+        int cubeKey = 1;
+        int backColIndex = 2;
+        cubeRepository.upRotate(cubeKey, colIndex, backColIndex);
         printCube();
     }
 
     public void movingToUpRightLine() {
         System.out.println("R");
         int colIndex = 2;
-        cubeRepository.upRotate(colIndex);
+        int cubeKey = 3;
+        int backColIndex = 0;
+        cubeRepository.upRotate(cubeKey, colIndex, backColIndex);
         printCube();
     }
 
     public void movingToDownRightLine() {
         System.out.println("R'");
+        int colIndex = 2;
+        int cubeKey = 3;
+        int backColIndex = 0;
+        cubeRepository.downRotate(cubeKey, colIndex, backColIndex);
         printCube();
     }
 
@@ -94,28 +106,28 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.leftRotate(cubeKey, cubeLineIndex);
         printCube();
     }
-
+    //TODO 구현
     public void movingToLeftFront() {
         System.out.println("F'");
         int cubeKey = 2;
         cubeRepository.reverseRotate(cubeKey);
         printCube();
     }
-
+    //TODO 구현
     public void movingToRightFront() {
         System.out.println("F");
         int cubeKey = 2;
         cubeRepository.rotate(cubeKey);
         printCube();
     }
-
+    //TODO 구현
     public void movingToLeftBack() {
         System.out.println("B");
         int cubeKey = 4;
         cubeRepository.reverseRotate(cubeKey);
         printCube();
     }
-
+    //TODO 구현
     public void movingToRightBack() {
         System.out.println("B'");
         int cubeKey = 4;
