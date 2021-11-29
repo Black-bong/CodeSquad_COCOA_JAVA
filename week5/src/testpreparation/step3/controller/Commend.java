@@ -1,14 +1,16 @@
 package testpreparation.step3.controller;
 
+import testpreparation.step3.Model.RubiksCube;
+import testpreparation.step3.resource.Commends;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Commend {
+public class Commend extends RubiksCube {
 
     public void splitInputString(String inputString) {
-
         List<String> commends = new ArrayList<>();
         int commendsIndex = 0;
         String commend;
@@ -23,6 +25,15 @@ public class Commend {
             commend = String.valueOf(inputString.charAt(i));
             commends.add(commend);
             commendsIndex++;
+        }
+        commendController(commends);
+    }
+
+    private void commendController(List<String> commends) {
+        Map<Integer, Runnable> commendList = new HashMap<>();
+        createCommend(commendList);
+        for(var i : commends) {
+            commendList.get(Commends.transferCommendID(i)).run();
         }
     }
 
@@ -47,8 +58,7 @@ public class Commend {
         return false;
     }
 
-    private Map<Integer, Runnable> createCommend() {
-        Map<Integer, Runnable> commendList = new HashMap<>();
+    private void createCommend(Map<Integer, Runnable> commendList) {
         commendList.put(0, () -> movingToRightTopLine());
         commendList.put(1, () -> movingToLeftTopLine());
         commendList.put(2, () -> movingToDownRightLine());
@@ -57,30 +67,6 @@ public class Commend {
         commendList.put(5, () -> movingToDownLeftLine());
         commendList.put(6, () -> movingToRightBottomLine());
         commendList.put(7, () -> movingToLeftBottomLine());
-        return commendList;
-    }
-
-    private void movingToLeftBottomLine() {
-    }
-
-    private void movingToRightBottomLine() {
-    }
-
-    private void movingToDownLeftLine() {
-    }
-
-    private void movingToUpLeftLine() {
-    }
-
-    private void movingToUpRightLine() {
-    }
-
-    private void movingToDownRightLine() {
-    }
-
-    private void movingToRightTopLine() {
-    }
-
-    private void movingToLeftTopLine() {
+        commendList.put(8, () -> cubeExit());
     }
 }
