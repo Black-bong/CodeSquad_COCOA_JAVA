@@ -57,17 +57,17 @@ public class RubiksCubeController extends RubiksCube {
     }
 
     private void createCommendController(Map<Integer, Runnable> controllerList) {
-        controllerList.put(0, () -> movingToRightTopLine()); // U'
-        controllerList.put(1, () -> movingToLeftTopLine()); // U
-        controllerList.put(2, () -> movingToDownRightLine()); // R'
-        controllerList.put(3, () -> movingToUpRightLine()); // R
-        controllerList.put(4, () -> movingToUpLeftLine()); // L'
-        controllerList.put(5, () -> movingToDownLeftLine()); // L
-        controllerList.put(6, () -> movingToRightBottomLine()); // D
-        controllerList.put(7, () -> movingToLeftBottomLine()); // D'
-        controllerList.put(8, () -> movingToRightFront()); // F
-        controllerList.put(9, () -> movingToLeftFront()); // F'
-        controllerList.put(10, () -> movingToRightBack()); // B'
-        controllerList.put(11, () -> movingToLeftBack()); // B
+        controllerList.put(0, () -> upInverted()); // U'
+        controllerList.put(1, () -> upClockWise()); // U
+        controllerList.put(2, () -> rightInverted()); // R'
+        controllerList.put(3, () -> rightClockWise()); // R
+        controllerList.put(4, () -> leftInverted()); // L'
+        controllerList.put(5, () -> leftClockWise()); // L
+        controllerList.put(6, () -> downInverted()); // D
+        controllerList.put(7, () -> downClockWise()); // D'
+        controllerList.put(8, () -> frontClockWise()); // F
+        controllerList.put(9, () -> frontInverted()); // F'
+        controllerList.put(10, () -> bottomInverted()); // B'
+        controllerList.put(11, () -> bottomClockWise()); // B
     }
 }

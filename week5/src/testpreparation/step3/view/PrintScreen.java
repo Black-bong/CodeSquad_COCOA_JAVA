@@ -14,7 +14,7 @@ public class PrintScreen extends CubeRepository {
         int seconds = time % 60;
         int minute = time / 60;
         System.out.printf("경과시간: %02d:%02d%n", minute, seconds);
-        System.out.println("조각갯수: " + count);
+        System.out.println("조작갯수: " + count);
         System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
     }
 
