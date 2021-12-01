@@ -2,23 +2,15 @@ package testpreparation.step3.view;
 
 
 import testpreparation.step3.model.RubiksCube;
-import testpreparation.step3.controller.Commend;
-import testpreparation.step3.resource.Input;
 
-import java.io.IOException;
 
 public class PrintScreen {
 
-    public void inputScreen() throws IOException {
+    public void inputScreen() {
         RubiksCube rubiksCube = new RubiksCube();
         rubiksCube.start();
-        Commend commend = new Commend();
-        Input input = new Input();
         rubiksCube.printCube();
-        while (true) {
-            System.out.print("CUBE> ");
-            commend.splitInputString(input.inputString());
-        }
+        System.out.print("CUBE> ");
     }
 
     public void endScreen() {
