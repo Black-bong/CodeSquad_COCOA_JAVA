@@ -12,7 +12,7 @@ public class PrintScreen extends CubeRepository {
 
     public void endScreen(int count) {
         System.out.println("경과시간: ");
-        System.out.println("조각갯수: " + (count + 1));
+        System.out.println("조각갯수: " + count);
         System.out.println("이용해주셔서 감사합니다. 뚜뚜뚜.");
     }
 

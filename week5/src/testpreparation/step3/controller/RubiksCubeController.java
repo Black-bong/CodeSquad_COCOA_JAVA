@@ -2,22 +2,52 @@ package testpreparation.step3.controller;
 
 import testpreparation.step3.model.RubiksCube;
 import testpreparation.step3.resource.Commends;
+import testpreparation.step3.resource.Input;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Commend extends RubiksCube {
+public class RubiksCubeController extends RubiksCube {
 
+    private int commandCount = 0;
+    private boolean flag;
 
-    public void saveCommend(List<String> commandList) {
+    public void start() throws IOException {
+        createCube();
+        startScreen();
+        saveCommend();
+    }
+
+    private void saveCommend() throws IOException {
+        Input input = new Input();
+        List<String> commandList = new LinkedList<>();
         Map<Integer, Runnable> controllerList = new HashMap<>();
         createCommendController(controllerList);
-        readCommend(commandList, controllerList);
+        while (!flag) {
+            clearCommandList(commandList);
+            inputBar();
+            input.inputString(commandList);
+            readCommend(commandList, controllerList);
+        }
+    }
+
+    private void clearCommandList(List<String> commandList) {
+        if (!commandList.isEmpty()) {
+            commandList.clear();
+        }
     }
 
     private void readCommend(List<String> commandList, Map<Integer, Runnable> controllerList) {
         for (String s : commandList) {
+            commandCount++;
+            if (s.equals("Q")) {
+                flag = true;
+                endScreen(commandCount);
+                break;
+            }
             controllerList.get(Commends.transferCommendID(s)).run();
         }
     }
