@@ -1,5 +1,6 @@
 package testpreparation.step3.controller;
 
+import testpreparation.step3.model.CubeTimer;
 import testpreparation.step3.model.RubiksCube;
 import testpreparation.step3.resource.Commends;
 import testpreparation.step3.resource.Input;
@@ -12,10 +13,13 @@ import java.util.Map;
 
 public class RubiksCubeController extends RubiksCube {
 
+    CubeTimer cubeTimer = CubeTimer.getInstance();
+
     private int commandCount = 0;
-    private boolean flag;
+    private boolean inputFlag = true;
 
     public void start() throws IOException {
+        cubeTimer.timeCheck();
         createCube();
         startScreen();
         saveCommend();
@@ -26,7 +30,7 @@ public class RubiksCubeController extends RubiksCube {
         List<String> commandList = new LinkedList<>();
         Map<Integer, Runnable> controllerList = new HashMap<>();
         createCommendController(controllerList);
-        while (!flag) {
+        while (inputFlag) {
             clearCommandList(commandList);
             inputBar();
             input.inputString(commandList);
@@ -44,8 +48,8 @@ public class RubiksCubeController extends RubiksCube {
         for (String s : commandList) {
             commandCount++;
             if (s.equals("Q")) {
-                flag = true;
-                endScreen(commandCount);
+                inputFlag = false;
+                endScreen(commandCount, cubeTimer.stopTimer());
                 break;
             }
             controllerList.get(Commends.transferCommendID(s)).run();
