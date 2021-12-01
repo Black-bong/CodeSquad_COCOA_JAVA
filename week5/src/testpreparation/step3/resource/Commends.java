@@ -12,8 +12,7 @@ public enum Commends {
     MOVING_TO_RIGHT_FRONT("F", 8),
     MOVING_TO_LEFT_FRONT("F'", 9),
     MOVING_TO_RIGHT_BACK("B'", 10),
-    MOVING_TO_LEFT_BACK("B", 11),
-    CUBE_EXIT("Q", 12);
+    MOVING_TO_LEFT_BACK("B", 11);
 
     private final String commend;
     private final int commendID;

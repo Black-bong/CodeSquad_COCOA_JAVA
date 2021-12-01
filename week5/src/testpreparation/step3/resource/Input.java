@@ -1,15 +1,38 @@
 package testpreparation.step3.resource;
 
+import testpreparation.step3.controller.Commend;
+import testpreparation.step3.view.PrintScreen;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Input {
-    public void inputString(List<String> commandList) throws IOException {
+    public void inputString(PrintScreen printScreen) throws IOException {
+        List<String> commandList = new LinkedList<>();
+        int count = 0;
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        String commands = buf.readLine().toUpperCase();
-        splitString(commands, commandList);
+        Commend commend = new Commend();
+        while (true) {
+            clearCommandList(commandList);
+            printScreen.inputBar();
+            String commands = buf.readLine().toUpperCase();
+            if (commands.equals("Q")) {
+                printScreen.endScreen(count);
+                break;
+            }
+            splitString(commands, commandList);
+            count += commandList.size();
+            commend.saveCommend(commandList);
+        }
+    }
+
+    private void clearCommandList(List<String> commandList) {
+        if (!commandList.isEmpty()) {
+            commandList.clear();
+        }
     }
 
     private void splitString(String commands, List<String> commandList) {

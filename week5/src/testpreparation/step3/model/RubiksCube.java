@@ -2,16 +2,22 @@ package testpreparation.step3.model;
 
 import testpreparation.step3.domain.Cube;
 import testpreparation.step3.repository.CubeRepository;
+import testpreparation.step3.resource.Input;
 import testpreparation.step3.view.PrintScreen;
 
+import java.io.IOException;
 
 
-public class RubiksCube extends PrintScreen {
+public class RubiksCube {
 
     CubeRepository cubeRepository = CubeRepository.getInstance();
 
-    public void start() {
+    public void start() throws IOException {
+        PrintScreen printScreen = new PrintScreen();
+        Input input = new Input();
         createCube();
+        printScreen.startScreen();
+        input.inputString(printScreen);
     }
 
     private void createCube() {
@@ -27,14 +33,6 @@ public class RubiksCube extends PrintScreen {
         cubeRepository.save(back);
         Cube bottom = new Cube("Y", 3, 3);
         cubeRepository.save(bottom);
-    }
-
-    public void printCube() {
-        cubeRepository.printCube();
-    }
-
-    public void cubeExit() {
-        endScreen();
     }
 
     public void movingToLeftBottomLine() {
