@@ -10,7 +10,7 @@ public class RubiksCube extends PrintScreen {
     CubeRepository cubeRepository = CubeRepository.getInstance();
 
     protected void createCube() {
-        Cube top = new Cube("⬜", 3, 3);
+        Cube top = new Cube("", 3, 3);
         cubeRepository.save(top);
         Cube left = new Cube("\uD83D\uDFE7", 3, 3);
         cubeRepository.save(left);
@@ -25,25 +25,19 @@ public class RubiksCube extends PrintScreen {
     }
 
     public void downInverted() {
-        System.out.println("D'");
-        String rotate = "inverted";
-        cubeRepository.down(rotate);
+        System.out.println("D");
     }
 
     public void downClockWise() {
-        System.out.println("D");
-        String rotate = "clock";
-        cubeRepository.down(rotate);
+        System.out.println("D'");
     }
 
     public void leftClockWise() {
         System.out.println("L");
-
     }
 
     public void leftInverted() {
         System.out.println("L'");
-
     }
 
     public void rightClockWise() {
@@ -58,14 +52,10 @@ public class RubiksCube extends PrintScreen {
 
     public void upInverted() {
         System.out.println("U'");
-        String rotate = "inverted";
-        cubeRepository.up(rotate);
     }
 
     public void upClockWise() {
         System.out.println("U");
-        String rotate = "clock";
-        cubeRepository.up(rotate);
     }
 
 

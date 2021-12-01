@@ -34,9 +34,8 @@ public class CubeRepository {
     private void center(StringBuilder sb, int c) {
         for (int i = 1; i < 5; i++) {
             for (int j = 0; j < 3; j++) {
-                sb.append(cubeList.get(i).getCube()[c][j]).append("");
+                sb.append(cubeList.get(i).getCube()[c][j]);
             }
-            sb.append("");
         }
         sb.append("\n");
     }
@@ -59,66 +58,12 @@ public class CubeRepository {
 
     }
 
-    public void up(String rotate) {
-        int[] cubeKey = {1, 2, 3, 4, 0};
-        int lowIndex = 0;
-        if (rotate.equals("inverted")) {
-            inverted(0);
-            rotateClockWise(cubeKey, lowIndex);
-        }
-        if (rotate.equals("clock")) {
-            clockWise(0);
-            rotateInverted(cubeKey, lowIndex);
-        }
+    public void up() {
+
     }
 
-    public void down(String rotate) {
-        int[] cubeKey = {1, 2, 3, 4, 5};
-        int lowIndex = 2;
-        if (rotate.equals("clock")) {
-            clockWise(5);
-            rotateClockWise(cubeKey, lowIndex);
-        }
-        if (rotate.equals("inverted")) {
-            inverted(5);
-            rotateInverted(cubeKey, lowIndex);
-        }
-    }
+    public void down() {
 
-    private void rotateClockWise(int[] cubeKey, int lowIndex) {
-        Deque<String> deque = new ArrayDeque<>();
-        for (int i = 0; i < cubeKey.length - 1; i++) {
-            for (int j = 0; j < 3; j++) {
-                deque.add(cubeList.get(cubeKey[i]).getCube()[lowIndex][j]);
-            }
-        }
-        for (int j = 0; j < 3; j++) {
-            deque.add(deque.poll());
-        }
-        for (int i = 0; i < cubeKey.length - 1; i++) {
-            for (int j = 0; j < 3; j++) {
-                cubeList.get(cubeKey[i]).getCube()[lowIndex][j] = deque.poll();
-            }
-        }
-        printCube();
-    }
-
-    private void rotateInverted(int[] cubeKey, int lowIndex) {
-        Deque<String> deque = new ArrayDeque<>();
-        for (int i = 0; i < cubeKey.length - 1; i++) {
-            for (int j = 0; j < 3; j++) {
-                deque.add(cubeList.get(cubeKey[i]).getCube()[lowIndex][j]);
-            }
-        }
-        for (int j = 0; j < 3; j++) {
-            deque.addFirst(deque.pollLast());
-        }
-        for (int i = 0; i < cubeKey.length - 1; i++) {
-            for (int j = 0; j < 3; j++) {
-                cubeList.get(cubeKey[i]).getCube()[lowIndex][j] = deque.poll();
-            }
-        }
-        printCube();
     }
 
     public void front() {
@@ -129,16 +74,27 @@ public class CubeRepository {
 
     }
 
+    private void rotateColClockWise() {
+
+    }
+
+    private void rotateColInverted() {
+
+    }
+
+    private void rotateLowClockWise() {
+
+    }
+
+    private void rotateLowInverted() {
+
+    }
+
     public void clockWise(int cubeKey) {
         String[][] tempArr = new String[3][3];
         for (int i = 0; i < tempArr.length; i++) {
             for (int j = 0; j < tempArr[i].length; j++) {
                 tempArr[j][2 - i] = cubeList.get(cubeKey).getCube()[i][j];
-            }
-        }
-        for (int i = 0; i < tempArr.length; i++) {
-            for (int j = 0; j < tempArr[i].length; j++) {
-                cubeList.get(cubeKey).getCube()[i][j] = tempArr[i][j];
             }
         }
     }
