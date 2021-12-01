@@ -74,34 +74,57 @@ public class CubeRepository {
 
     }
 
-    private void rotateColClockWise() {
-
-    }
-
-    private void rotateColInverted() {
-
-    }
-
-    private void rotateLowClockWise() {
-
-    }
-
-    private void rotateLowInverted() {
-
-    }
-
-    public void clockWise(int cubeKey) {
-        String[][] tempArr = new String[3][3];
-        for (int i = 0; i < tempArr.length; i++) {
-            for (int j = 0; j < tempArr[i].length; j++) {
-                tempArr[j][2 - i] = cubeList.get(cubeKey).getCube()[i][j];
+    private void readDeque(Deque<String> deque) {
+        for (int cubeKey = 1; cubeKey < cubeList.size() - 1; cubeKey++) {
+            for (int col = 0; col < 3; col++) {
+                cubeList.get(cubeKey).getCube()[2][col] = deque.poll();
             }
         }
     }
 
-    public void inverted(int cubeKey) {
-        for (int i = 0; i < 3; i++) {
-            clockWise(cubeKey);
+    private void saveDeque(Deque<String> deque) {
+        for (int cubeKey = 1; cubeKey < cubeList.size() - 1; cubeKey++) {
+            for (int col = 0; col < 3; col++) {
+                deque.add(cubeList.get(cubeKey).getCube()[2][col]);
+            }
         }
+    }
+
+    public void rotateClockWise() {
+        Deque<String> deque = new ArrayDeque<>();
+        saveDeque(deque);
+        for (int i = 0; i < 3; i++) {
+            deque.addFirst(deque.pollLast());
+        }
+        readDeque(deque);
+        cubeList.get(5).setCube(clockWise(cubeList.get(5).getCube()));
+    }
+
+    public void rotateInverted() {
+        Deque<String> deque = new ArrayDeque<>();
+        saveDeque(deque);
+        for (int i = 0; i < 3; i++) {
+            deque.add(deque.poll());
+        }
+        readDeque(deque);
+        cubeList.get(5).setCube(inverted(cubeList.get(5).getCube()));
+    }
+
+    public String[][] clockWise(String[][] cube) {
+        String[][] tempArr = new String[3][3];
+        for (int i = 0; i < tempArr.length; i++) {
+            for (int j = 0; j < tempArr[i].length; j++) {
+                tempArr[j][2 - i] = cube[i][j];
+            }
+        }
+        return tempArr;
+    }
+
+    public String[][] inverted(String[][] cube) {
+        String[][] tempArr = new String[3][3];
+        for (int i = 0; i < 3; i++) {
+            tempArr = clockWise(cube);
+        }
+        return tempArr;
     }
 }

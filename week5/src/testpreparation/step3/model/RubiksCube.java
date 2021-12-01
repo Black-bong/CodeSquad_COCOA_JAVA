@@ -10,7 +10,7 @@ public class RubiksCube extends PrintScreen {
     CubeRepository cubeRepository = CubeRepository.getInstance();
 
     protected void createCube() {
-        Cube top = new Cube("", 3, 3);
+        Cube top = new Cube("⬜", 3, 3);
         cubeRepository.save(top);
         Cube left = new Cube("\uD83D\uDFE7", 3, 3);
         cubeRepository.save(left);
@@ -26,10 +26,14 @@ public class RubiksCube extends PrintScreen {
 
     public void downInverted() {
         System.out.println("D");
+        cubeRepository.rotateClockWise();
+        printCube();
     }
 
     public void downClockWise() {
         System.out.println("D'");
+        cubeRepository.rotateInverted();
+        printCube();
     }
 
     public void leftClockWise() {

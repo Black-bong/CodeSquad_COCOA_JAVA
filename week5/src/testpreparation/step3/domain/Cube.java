@@ -30,4 +30,8 @@ public class Cube {
     public String[][] getCube() {
         return cube;
     }
+
+    public void setCube(String[][] cube) {
+        this.cube = cube;
+    }
 }
