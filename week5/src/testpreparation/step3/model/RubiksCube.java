@@ -38,6 +38,8 @@ public class RubiksCube extends PrintScreen {
 
     public void leftClockWise() {
         System.out.println("L");
+        cubeRepository.left();
+        printCube();
     }
 
     public void leftInverted() {

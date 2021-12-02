@@ -51,7 +51,33 @@ public class CubeRepository {
     }
 
     public void left() {
-
+        int[] cdKey = {0, 2, 4, 5};
+        Deque<String> deque = new ArrayDeque<>();
+        Deque<String> temp = new ArrayDeque<>();
+        int colIndex = 0;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                deque.add(cubeList.get(cdKey[i]).getCube()[j][0]);
+            }
+        }
+        for (int j = 2; j > -1; j --) {
+            temp.add(cubeList.get(cdKey[2]).getCube()[j][2]);
+        }
+        for (int j = 2; j > -1; j --) {
+            temp.add(cubeList.get(cdKey[3]).getCube()[j][0]);
+        }
+        for (int j = 0; j < 3; j+=2) {
+            for (int i = 0; i < 3; i++) {
+                cubeList.get(cdKey[j]).getCube()[i][colIndex] = temp.poll();
+            }
+            colIndex = 2;
+        }
+        for (int j = 1; j < 4; j+=2) {
+            for (int i = 0; i < 3; i++) {
+                cubeList.get(cdKey[j]).getCube()[i][0] = deque.poll();
+            }
+        }
+        cubeList.get(1).setCube(clockWise(cubeList.get(1).getCube()));
     }
 
     public void right() {
