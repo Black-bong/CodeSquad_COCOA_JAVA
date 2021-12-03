@@ -22,8 +22,9 @@ public class Input {
     }
 
     private void inputRangeCheck(String input, PrintScreen printScreen) throws IOException {
+        int inputLength = 3;
         try {
-            if (input.length() > 3) {
+            if (input.length() != inputLength) {
                 throw new InputNumberRangeException();
             }
         } catch (InputNumberRangeException e) {
