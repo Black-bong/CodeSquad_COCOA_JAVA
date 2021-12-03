@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Number {
 
-    public static final List<Integer> numberList = new ArrayList<>();
+    private static final List<Integer> numberList = new ArrayList<>();
 
     public Number(int startNum, int endNum) {
         for (int i = startNum; i < endNum + 1; i++) {
