@@ -22,9 +22,7 @@ public class Game {
 
     private List<Integer> inputNumber(PrintScreen printScreen) throws IOException {
         Input input = new Input();
-        List<Integer> inputNumbers;
-        inputNumbers = (input.inputInteger(printScreen));
-        return inputNumbers;
+        return input.inputInteger(printScreen);
     }
 
     private List<Integer> randomNumber() {
