@@ -1,9 +1,7 @@
 package testpreparation.step4;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Number {
 
@@ -15,8 +13,8 @@ public class Number {
         }
     }
 
-    public Set<Integer> getNumber(int numberCount) {
-        Set<Integer> numbers = new HashSet<>();
+    public List<Integer> getNumber(int numberCount) {
+        List<Integer> numbers = new ArrayList<>();
         shuffleNumberList();
         for (int i = 0; i < numberCount; i++) {
             numbers.add(numberList.get(i));
