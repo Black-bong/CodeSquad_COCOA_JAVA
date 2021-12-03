@@ -5,135 +5,86 @@ import testpreparation.step3.repository.CubeRepository;
 import testpreparation.step3.view.PrintScreen;
 
 
-
 public class RubiksCube extends PrintScreen {
 
     CubeRepository cubeRepository = CubeRepository.getInstance();
 
-    public void start() {
-        createCube();
-    }
-
-    private void createCube() {
-        Cube top = new Cube("W", 3, 3);
+    protected void createCube() {
+        Cube top = new Cube("⬜", 3, 3);
         cubeRepository.save(top);
-        Cube left = new Cube("O", 3, 3);
+        Cube left = new Cube("\uD83D\uDFE7", 3, 3);
         cubeRepository.save(left);
-        Cube front = new Cube("G", 3, 3);
+        Cube front = new Cube("\uD83D\uDFE9", 3, 3);
         cubeRepository.save(front);
-        Cube right = new Cube("R", 3, 3);
+        Cube right = new Cube("\uD83D\uDFE5", 3, 3);
         cubeRepository.save(right);
-        Cube back = new Cube("B", 3, 3);
+        Cube back = new Cube("\uD83D\uDFE6", 3, 3);
         cubeRepository.save(back);
-        Cube bottom = new Cube("Y", 3, 3);
+        Cube bottom = new Cube("\uD83D\uDFE8", 3, 3);
         cubeRepository.save(bottom);
     }
 
-    public void printCube() {
-        cubeRepository.printCube();
-    }
-
-    public void cubeExit() {
-        endScreen();
-    }
-
-    public void movingToLeftBottomLine() {
-        System.out.println("D'");
-        int cubeKey = 5;
-        int cubeLineIndex = 2;
-        cubeRepository.leftRotate(cubeKey, cubeLineIndex);
-        printCube();
-    }
-
-    public void movingToRightBottomLine() {
+    public void downInverted() {
         System.out.println("D");
-        int cubeKey = 5;
-        int cubeLineIndex = 2;
-        cubeRepository.rightRotate(cubeKey, cubeLineIndex);
+        cubeRepository.rotateClockWise();
         printCube();
     }
 
-    public void movingToDownLeftLine() {
+    public void downClockWise() {
+        System.out.println("D'");
+        cubeRepository.rotateInverted();
+        printCube();
+    }
+
+    public void leftClockWise() {
         System.out.println("L");
-        int colIndex = 0;
-        int cubeKey = 1;
-        int backColIndex = 2;
-        cubeRepository.downRotate(cubeKey, colIndex, backColIndex);
+        cubeRepository.left();
         printCube();
     }
 
-    public void movingToUpLeftLine() {
+    public void leftInverted() {
         System.out.println("L'");
-        int colIndex = 0;
-        int cubeKey = 1;
-        int backColIndex = 2;
-        cubeRepository.upRotate(cubeKey, colIndex, backColIndex);
-        printCube();
     }
 
-    public void movingToUpRightLine() {
+    public void rightClockWise() {
         System.out.println("R");
-        int colIndex = 2;
-        int cubeKey = 3;
-        int backColIndex = 0;
-        cubeRepository.upRotate(cubeKey, colIndex, backColIndex);
-        printCube();
+
     }
 
-    public void movingToDownRightLine() {
+    public void rightInverted() {
         System.out.println("R'");
-        int colIndex = 2;
-        int cubeKey = 3;
-        int backColIndex = 0;
-        cubeRepository.downRotate(cubeKey, colIndex, backColIndex);
-        printCube();
+
     }
 
-    public void movingToRightTopLine() {
+    public void upInverted() {
         System.out.println("U'");
-        int cubeKey = 0;
-        int cubeLineIndex = 0;
-        cubeRepository.rightRotate(cubeKey, cubeLineIndex);
-        printCube();
     }
 
-    public void movingToLeftTopLine() {
+    public void upClockWise() {
         System.out.println("U");
-        int cubeKey = 0;
-        int cubeLineIndex = 0;
-        cubeRepository.leftRotate(cubeKey, cubeLineIndex);
-        printCube();
     }
 
-    //TODO 구현
-    public void movingToLeftFront() {
+
+    public void frontInverted() {
         System.out.println("F'");
-        int cubeKey = 2;
-        cubeRepository.reverseRotate(cubeKey);
-        printCube();
+
     }
 
-    //TODO 구현
-    public void movingToRightFront() {
+
+    public void frontClockWise() {
         System.out.println("F");
-        int cubeKey = 2;
-        cubeRepository.frontRotate(cubeKey);
-        printCube();
+
     }
 
-    //TODO 구현
-    public void movingToLeftBack() {
+
+    public void bottomClockWise() {
         System.out.println("B");
-        int cubeKey = 4;
-        cubeRepository.reverseRotate(cubeKey);
-        printCube();
+
     }
 
-    //TODO 구현
-    public void movingToRightBack() {
+
+    public void bottomInverted() {
         System.out.println("B'");
-        int cubeKey = 4;
-        cubeRepository.rotate(cubeKey);
-        printCube();
+
     }
 }

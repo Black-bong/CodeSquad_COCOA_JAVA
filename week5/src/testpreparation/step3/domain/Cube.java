@@ -3,9 +3,9 @@ package testpreparation.step3.domain;
 public class Cube {
     private String[][] cube;
     private int id;
-    private String color;
-    private int width;
-    private int length;
+    private final String color;
+    private final int width;
+    private final int length;
 
     public Cube(String color, int width, int length) {
         this.color = color;
@@ -29,5 +29,9 @@ public class Cube {
 
     public String[][] getCube() {
         return cube;
+    }
+
+    public void setCube(String[][] cube) {
+        this.cube = cube;
     }
 }
