@@ -6,7 +6,7 @@ public class PrintScreen {
     }
 
     public void reInputScreen() {
-        System.out.println("잘못된 값입니다.");
+        System.out.println("잘못 입력하셨습니다. 숫자를 입력해주세요.");
     }
 
     public void gameOverScreen() {
