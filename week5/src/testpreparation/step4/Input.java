@@ -11,28 +11,29 @@ import java.util.Set;
 public class Input {
 
     public List<Integer> inputInteger(PrintScreen printScreen) throws IOException {
-        Set<Integer> checkBeforeInputNumbers = new HashSet<>();
+        List<Integer> inputNumbers = new ArrayList<>();
         BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
         printScreen.inputBar();
         String input = buf.readLine();
         inputRangeCheck(input, printScreen);
         for (int i = 0; i < input.length(); i++) {
             String inputChar = String.valueOf(input.charAt(i));
-            checkBeforeInputNumbers.add(isInteger(inputChar, printScreen));
+            inputNumbers.add(isInteger(inputChar, printScreen));
         }
-        return inputDuplicateCheck(input, printScreen, checkBeforeInputNumbers);
+        inputDuplicateCheck(inputNumbers, printScreen);
+        return inputNumbers;
     }
 
-    private List<Integer> inputDuplicateCheck(String input, PrintScreen printScreen, Set<Integer> checkBeforeInputNumbers) throws IOException {
+    private void inputDuplicateCheck(List<Integer> inputNumbers, PrintScreen printScreen) throws IOException {
+        Set<Integer> checkBeforeInputNumbers = new HashSet<>(inputNumbers);
         try {
-            if (input.length() != checkBeforeInputNumbers.size()) {
+            if (checkBeforeInputNumbers.size() != inputNumbers.size()) {
                 throw new InputNumberDuplicateException();
             }
         } catch (InputNumberDuplicateException e) {
             System.out.println(e.getMessage());
             inputInteger(printScreen);
         }
-        return new ArrayList<>(checkBeforeInputNumbers);
     }
 
     private void inputRangeCheck(String input, PrintScreen printScreen) throws IOException {
