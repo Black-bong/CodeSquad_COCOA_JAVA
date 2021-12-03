@@ -6,9 +6,10 @@ import java.util.List;
 public class Number {
 
     public List<Integer> getNumber(List<Integer> numberList, int numberCount) {
+        List<Integer> temp = shuffleNumberList(numberList);
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < numberCount; i++) {
-            numbers.add(shuffleNumberList(numberList).get(i));
+            numbers.add(temp.get(i));
         }
         return numbers;
     }
