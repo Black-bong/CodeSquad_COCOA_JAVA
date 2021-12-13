@@ -20,8 +20,10 @@ public class BaseBall {
             if (numberCheck(inputNumber.get(i), randomNumber.get(i), randomNumber) == 2)
                 ball++;
         }
-        printScreen.strikeAndBallScreen(strike, ball);
+        printScreen.strike(strike);
+        printScreen.ball(ball);
         isSameNoting(printScreen, strike, ball);
+        System.out.println();
     }
 
     private void isSameNoting(PrintScreen printScreen, int strike, int ball) {

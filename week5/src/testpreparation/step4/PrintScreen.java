@@ -13,9 +13,15 @@ public class PrintScreen {
         System.out.println("기회를 모두 사용했습니다! 실패");
     }
 
-    public void strikeAndBallScreen(int strike, int ball) {
-        if (strike != 0 || ball != 0) {
-            System.out.println(strike + "스트라이크! " + ball + "볼!");
+    public void strike(int strike) {
+        if (strike != 0) {
+            System.out.print(strike + "스트라이크!");
+        }
+    }
+
+    public void ball(int ball) {
+        if (ball != 0) {
+            System.out.print(ball + "볼!");
         }
     }
 
