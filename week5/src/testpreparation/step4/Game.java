@@ -1,7 +1,6 @@
 package testpreparation.step4;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -27,15 +26,9 @@ public class Game {
 
     private List<Integer> randomNumber() {
         Number number = new Number();
-        List<Integer> numberList = new ArrayList<>();
         int startNum = 1;
         int endNum = 10;
-        int numberCount = 3;
-        for (int i = startNum; i < endNum; i++) {
-            numberList.add(i);
-        }
-        numberList = number.getNumber(numberList, numberCount);
-        return numberList;
+        return number.getNumber(startNum, endNum);
     }
 
     private void saveNumber(List<Integer> inputNumbers, List<Integer> randomNumbers) {
