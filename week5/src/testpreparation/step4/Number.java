@@ -1,26 +1,21 @@
 package testpreparation.step4;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static java.util.stream.Collectors.toList;
 
 public class Number {
 
-    public List<Integer> getNumber(List<Integer> numberList, int numberCount) {
-        List<Integer> temp = shuffleNumberList(numberList);
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < numberCount; i++) {
-            numbers.add(temp.get(i));
-        }
-        return numbers;
-    }
+    public List<Integer> getNumber(int startNum, int endNum) {
+        List<Integer> numbers = new Random()
+                .ints(startNum, endNum)
+                .distinct()
+                .limit(3)
+                .boxed()
+                .collect(toList());
 
-    private List<Integer> shuffleNumberList(List<Integer> numberList) {
-        for (int i = 0; i < numberList.size(); i++) {
-            int randomIndex = (int) (Math.random() * numberList.size());
-            int temp = numberList.get(randomIndex);
-            numberList.set(randomIndex, numberList.get(i));
-            numberList.set(i, temp);
-        }
-        return numberList;
+        numbers.forEach(System.out::println);
+        return numbers;
     }
 }
